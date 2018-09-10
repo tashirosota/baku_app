@@ -6,22 +6,16 @@
 //
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
-import $ from 'jquery';
 
-window.jQuery = $;
-window.$ = $;console.log('Hello World from Webpacker')
-
+console.log('Hello World from Webpacker');
+// js
+import 'jquery'
+import 'popper.js'
 import 'bootstrap'
-import 'moment/moment'
-import 'bootstrap4-datetimepicker/src/js/bootstrap-datetimepicker'
-import 'moment/locale/ja'
 import Rails from 'rails-ujs';
-
 Rails.start();
 
 // scss , css
-import '../src/application.scss'
 import 'bootstrap/scss/bootstrap.scss'
+import '../src/top.scss'
 import 'font-awesome/scss/font-awesome.scss'
-import 'bootstrap4-datetimepicker/src/sass/bootstrap-datetimepicker-build.scss';
-import 'bootstrap/dist/css/bootstrap.css'
