@@ -1,2 +1,2 @@
-class Client::EventsController < ApplicationController
+class Client::EventsController < Client::ArtistsController
 end

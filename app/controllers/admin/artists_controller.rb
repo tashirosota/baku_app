@@ -1,2 +1,2 @@
-class Admin::ArtistsController < ApplicationController
+class Admin::ArtistsController < Admin::ApplicationController
 end

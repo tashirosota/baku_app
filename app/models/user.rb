@@ -2,9 +2,14 @@
 #
 # Table name: users
 #
-#  id         :bigint(8)        not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :bigint(8)        not null, primary key
+#  name         :string
+#  avatar       :string
+#  twitter_url  :string
+#  facebook_url :string
+#  profile      :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 
 class User < ApplicationRecord
@@ -12,9 +17,15 @@ class User < ApplicationRecord
   before_validation :valid_facebook_url, :valid_twitter_url
   # mount_uploader :avatar, AvatarUploader #carrierwave設定の時にまとめてやる
   validates :name, presence: true, uniqueness: true
-  validates :twitter_url, presence: true
-  validates :facebook_url, presence: true
   validates :profile, presence: true, length: { maximum: 240 }
+
+  has_many :events
+  has_many :artists
+  has_many :collaborators
+  has_many :follows_from, class_name: 'Friend', foreign_key: :from_user_id
+  has_many :follows_to,   class_name: 'Friend', foreign_key: :to_u
+  has_many :following, through: :follows_from, source: :to_user
+  has_many :followed,  through: :follows_to,   source: :from_user
 
   def valid_facebook_url
     return true unless facebook_url

@@ -6,6 +6,7 @@ class CreateArtists < ActiveRecord::Migration[5.2]
       t.string :genre, commment: 'ジャンル'
       t.string :mv_urls, comment: 'mv(配列で格納)'
       t.string :artist_image, comment: 'アー写'
+      t.integer :user_id, comment: '登録者id'
 
       t.timestamps
     end

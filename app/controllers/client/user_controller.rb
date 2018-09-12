@@ -1,2 +1,2 @@
-class Client::UserController < ApplicationController
+class Client::UserController < Client::ArtistsController
 end
