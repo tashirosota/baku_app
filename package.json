@@ -20,7 +20,9 @@
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
     "rails-ujs": "^5.2.1",
+    "tabler": "^1.0.0",
     "vue": "^2.5.17",
+    "vue-material": "^1.0.0-beta-10.2",
     "webpack": "^4.17.2",
     "webpack-dev-server": "^3.1.8",
     "yarn": "^1.9.4"

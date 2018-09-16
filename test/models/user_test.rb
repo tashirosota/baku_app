@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: organizers
 #
 #  id           :bigint(8)        not null, primary key
 #  name         :string

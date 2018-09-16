@@ -15,6 +15,6 @@ class Friend < ApplicationRecord
 
   enumerize :status, in: %w(request rejected approved goodbye), scope: true, predicates: true
 
-  belongs_to :from_user, class_name: 'User', foreign_key: :from_user_id
-  belongs_to :to_user, class_name: 'User', foreign_key: :to_user_id
+  belongs_to :from_user, class_name: 'Eventer', foreign_key: :from_user_id
+  belongs_to :to_user, class_name: 'Eventer', foreign_key: :to_user_id
 end

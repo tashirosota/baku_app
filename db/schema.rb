@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_10_031708) do
+ActiveRecord::Schema.define(version: 2018_09_16_015356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 2018_09_10_031708) do
   create_table "collaborators", force: :cascade do |t|
     t.integer "user_id", comment: "主催者id"
     t.integer "event_id", comment: "イベントid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "eventers", force: :cascade do |t|
+    t.string "name", comment: "ユーザ名"
+    t.string "avatar", comment: "プロフィール写真"
+    t.string "twitter_url", comment: "twitter_url"
+    t.string "facebook_url", comment: "facebook_url"
+    t.text "profile", comment: "紹介文"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,16 +79,6 @@ ActiveRecord::Schema.define(version: 2018_09_10_031708) do
     t.string "status", comment: "状態%(候補 オファー中 拒否 決定 キャンセル)"
     t.integer "event_id", comment: "イベントid"
     t.integer "artist_id", comment: "アーティストid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name", comment: "ユーザ名"
-    t.string "avatar", comment: "プロフィール写真"
-    t.string "twitter_url", comment: "twitter_url"
-    t.string "facebook_url", comment: "facebook_url"
-    t.text "profile", comment: "紹介文"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

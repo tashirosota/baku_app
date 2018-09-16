@@ -24,7 +24,7 @@ class Artist < ApplicationRecord
   validates :genre, presence: true
 
   has_many :offers
-  belongs_to :user
+  belongs_to :eventer
 
   def valid_mv_urls
     return true unless valid_mv_urls

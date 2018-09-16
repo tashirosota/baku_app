@@ -10,8 +10,8 @@ require 'faker'
 Administrator.create(name: '運営アカウント', password: 'password', password_confirmation: 'password')
 
 10.times do |i|
-  var = "@user#{i}"
-  user = User.create!(name: "テストユーザ-#{i}", profile: 'テストアカウントです')
-  eval("var = user")
+  var = "@organizer#{i}"
+  organizer = Eventer.create!(name: "テストユーザ-#{i}", profile: 'テストアカウントです')
+  eval("var = organizer")
 end
  @user#{i}

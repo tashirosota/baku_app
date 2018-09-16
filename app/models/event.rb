@@ -27,6 +27,6 @@ class Event < ApplicationRecord
   enumerize :status, in: %w(plan before_offered offering fixed), scope: true, default: 'plan', predicates: true
 
   has_many :offers
-  belongs_to :user
+  belongs_to :eventer
   has_many :collaborators
 end

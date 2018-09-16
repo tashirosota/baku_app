@@ -17,6 +17,7 @@ import 'bootstrap4-datetimepicker/src/js/bootstrap-datetimepicker'
 import 'moment/locale/ja'
 import Rails from 'rails-ujs';
 
+
 Rails.start();
 
 // scss , css

@@ -32,7 +32,7 @@ RUN bundle install --jobs=4 --retry=3
 
 # 全ファイルコピー
 WORKDIR $ROOT_PATH
-COPY . $ROOT_PATH
+ADD . $ROOT_PATH
 
 # yarn
 RUN yarn install --update-checksums
