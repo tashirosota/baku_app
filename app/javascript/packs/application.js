@@ -13,7 +13,6 @@ window.$ = $;console.log('Hello World from Webpacker')
 
 import 'bootstrap'
 import 'moment/moment'
-import 'bootstrap4-datetimepicker/src/js/bootstrap-datetimepicker'
 import 'moment/locale/ja'
 import Rails from 'rails-ujs';
 
@@ -24,5 +23,4 @@ Rails.start();
 import '../src/application.scss'
 import 'bootstrap/scss/bootstrap.scss'
 import 'font-awesome/scss/font-awesome.scss'
-import 'bootstrap4-datetimepicker/src/sass/bootstrap-datetimepicker-build.scss';
 import 'bootstrap/dist/css/bootstrap.css'

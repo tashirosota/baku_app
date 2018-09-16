@@ -27,10 +27,6 @@ class Eventer < ApplicationRecord
   has_many :following, through: :follows_from, source: :to_user
   has_many :followed,  through: :follows_to,   source: :from_user
 
-  def valid_facebook_url
-    return true unless facebook_url
-  end
-
   def valid_twitter_url
     return true unless twitter_url
   end
