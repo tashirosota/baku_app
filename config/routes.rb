@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
     get 'collaborators', to: 'collaborators#index'
     get 'collaborators/:id', to: 'collaborators#show'
-    
+
     resources :administrators
 
     post 'password', to: 'password#update'
