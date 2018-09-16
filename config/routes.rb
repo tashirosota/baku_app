@@ -6,14 +6,12 @@ Rails.application.routes.draw do
   get 'logout', to: 'client/sessions#destroy'
 
   #client側route(pathにclientは含めないこと)
-  namespace :client do
-    resources :events, path: 'events'
-    resources :artists, path: 'artists'
-    resources :friends, path: 'friends'
-    resources :collaborators, path: 'collaborators'
-    resources :offers, path: 'offers'
-    resource :eventer, path: 'eventer'
-  end
+  resources :events, controller: 'client/events'
+  resources :artists, controller: 'client/artists'
+  resources :friends, controller: 'client/friends'
+  resources :collaborators, controller: 'client/collaborators'
+  resources :offers, controller: 'client/offers'
+  resource :eventer, controller: 'client/eventer'
 
   #admin側route
   namespace :admin do
@@ -34,10 +32,9 @@ Rails.application.routes.draw do
 
     get 'collaborators', to: 'collaborators#index'
     get 'collaborators/:id', to: 'collaborators#show'
+    
+    resources :administrators
 
-    get 'administrators', to: 'administrators#index'
-    get 'administrators/:id', to: 'administrators#show'
-
-    resource :password
+    post 'password', to: 'password#update'
   end
 end
