@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2018_09_16_015356) do
     t.string "name", comment: "ユーザ名"
     t.string "avatar", comment: "プロフィール写真"
     t.string "twitter_url", comment: "twitter_url"
-    t.string "facebook_url", comment: "facebook_url"
     t.text "profile", comment: "紹介文"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

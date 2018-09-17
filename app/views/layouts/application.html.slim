@@ -5,6 +5,7 @@ html
       | BakuApp
     = csrf_meta_tags
     = csp_meta_tag
+    = favicon_link_tag('/favicon.ico')
     =  javascript_pack_tag 'application', media: 'all'
     =  stylesheet_pack_tag 'application'
   body
