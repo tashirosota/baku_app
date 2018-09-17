@@ -6,6 +6,6 @@ class Admin::SessionsController < Admin::ApplicationController
   end
 
   def create
-    
+
   end
 end
