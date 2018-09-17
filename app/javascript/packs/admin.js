@@ -13,10 +13,10 @@ import Rails from 'rails-ujs';
 Rails.start();
 
 // scss , css
-import '../src/admin.scss'
 import 'bootstrap/scss/bootstrap.scss'
 import 'font-awesome/scss/font-awesome.scss'
 import 'bootstrap/dist/css/bootstrap.css'
+import '../src/admin.scss'
 
 /**
  *

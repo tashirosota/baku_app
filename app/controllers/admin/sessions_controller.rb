@@ -11,6 +11,7 @@ class Admin::SessionsController < Admin::ApplicationController
         return
       end
     end
+    redirect_to admin_root_path
   end
 
   def destroy
