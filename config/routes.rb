@@ -16,9 +16,9 @@ Rails.application.routes.draw do
 
   #admin側route
   namespace :admin do
-    get 'login', to: 'client/sessions#new'
-    post 'login', to: 'client/sessions#create'
-    post 'logout', to: 'client/sessions#destroy'
+    get 'login', to: 'sessions#new'
+    post 'login', to: 'sessions#create'
+    post 'logout', to: 'sessions#destroy'
 
     root 'dashboard#index'
     get 'dashboard', to: 'dashboard#index'
