@@ -14,42 +14,55 @@ import '../src/admin_login.scss'
 import 'bootstrap/scss/bootstrap.scss'
 
 
-$(function(){
-    var textfield = $("input[name=user]");
-    $('button[type="submit"]').click(function(e) {
+$(document).ready(function() {
+    $(document).on("click", ".btn-info", function(e){
         e.preventDefault();
+        console.log('info')
         //little validation just to check username
-        if (textfield.val() != "") {
-            //$("body").scrollTo("#output");
-            $("#output").addClass("alert alert-success animated fadeInUp").html("Welcome back " + "<span style='text-transform:uppercase'>" + textfield.val() + "</span>");
-            $("#output").removeClass(' alert-danger');
-            $("input").css({
-                "height":"0",
-                "padding":"0",
-                "margin":"0",
-                "opacity":"0"
+        if ($("#username").val() != "") {
+            //ajax通信
+            $.ajax({
+                type: 'POST',
+                url: $(this).get(0).action,
+                data: $('#login-form').serializeArray()
+            }).fail(function(){
+                //失敗時の処置
+                $("#output").addClass("alert alert-danger animated fadeInUp").html("通信に失敗しました。");
+            }).done(function(data){
+                $("#output").addClass("alert alert-danger animated fadeInUp").html("メールアドレスまたはパスワードが間違っています");
+                $("input").css({
+                    "height":"0",
+                    "padding":"0",
+                    "margin":"0",
+                    "opacity":"0"
+                });
+                $('button[type="submit"]').html("続ける")
+                    .removeClass("btn-info")
+                    .addClass("btn-primary")
             });
             //change button text
-            $('button[type="submit"]').html("continue")
-                .removeClass("btn-info")
-                .addClass("btn-default").click(function(){
-                $("input").css({
-                    "height":"auto",
-                    "padding":"10px",
-                    "opacity":"1"
-                }).val("");
-            });
+
 
             //show avatar
             $(".avatar").css({
-                "background-image": "url('http://api.randomuser.me/0.3.2/portraits/women/35.jpg')"
+                // "background-image": "url('http://api.randomuser.me/0.3.2/portraits/women/35.jpg')" bakuのアイコン
             });
         } else {
-            //remove success mesage replaced with error message
             $("#output").removeClass(' alert alert-success');
-            $("#output").addClass("alert alert-danger animated fadeInUp").html("sorry enter a username ");
+            $("#output").addClass("alert alert-danger animated fadeInUp").html("値を入力してください");
         }
-        //console.log(textfield.val());
+    });
 
+    $(document).on("click", ".btn-primary", function(e){
+        $("input").css({
+            "height":"auto",
+            "padding":"10px",
+            "opacity":"1"
+        }).val("");
+        e.preventDefault();
+        $("#output").removeClass("alert alert-danger animated fadeInUp").html("")
+        $('button[type="submit"]').html("Login")
+            .removeClass("btn-default")
+            .addClass("btn-info")
     });
 });
