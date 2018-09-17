@@ -2,6 +2,24 @@
 # yarn lockfile v1
 
 
+"@angular/common@^6.1.7":
+  version "6.1.7"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-6.1.7.tgz#b94ae9f1c71b1223a305942f09aabf818f5ed2e9"
+  dependencies:
+    tslib "^1.9.0"
+
+"@angular/core@^6.1.7":
+  version "6.1.7"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-6.1.7.tgz#036088227cbff7d3fc7af0c43c5af9db46149f16"
+  dependencies:
+    tslib "^1.9.0"
+
+"@angular/platform-browser@^6.1.7":
+  version "6.1.7"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-6.1.7.tgz#21da4fbe6f407320ee50cdf9ab0b69b2e10eca50"
+  dependencies:
+    tslib "^1.9.0"
+
 "@babel/code-frame@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.0.0.tgz#06e2ab19bdb535385559aabb5ba59729482800f8"
