@@ -831,6 +831,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular@1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.1.tgz#274bd432e3c8b321f41c25c79e20d4f3b0fbaf79"
+
 ansi-colors@^3.0.0:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.0.5.tgz#cb9dc64993b64fd6945485f797fc3853137d9a7b"
@@ -2160,6 +2164,10 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
+
+circle-progress@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/circle-progress/-/circle-progress-1.0.0.tgz#4db9346b42e29dcc9bbecd4f049e3f650c6d9791"
 
 clap@^1.0.9:
   version "1.2.3"

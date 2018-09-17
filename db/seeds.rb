@@ -14,4 +14,4 @@ Administrator.create(name: '運営アカウント', password: 'password', passwo
   organizer = Eventer.create!(name: "テストユーザ-#{i}", profile: 'テストアカウントです')
   eval("var = organizer")
 end
- @user#{i}
+
