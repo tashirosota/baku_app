@@ -210,11 +210,11 @@ pre {
 figure {
   margin: 0 0 1rem;
 }
-
-img {
-  vertical-align: middle;
-  border-style: none;
-}
+// 謎のエラーが出るのでコメントアウト
+//img {
+//  vertical-align: middle;
+//  border-style: none;
+//}
 
 svg {
   overflow: hidden;

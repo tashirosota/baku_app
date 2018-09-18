@@ -3,7 +3,7 @@ import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;console.log('Hello World from Webpacker')
 
-import 'bootstrap'
+import '../../../self_node_modules/bootstrap'
 import Rails from 'rails-ujs';
 
 
@@ -11,7 +11,7 @@ Rails.start();
 
 // scss , css
 import '../src/admin_login.scss'
-import 'bootstrap/scss/bootstrap.scss'
+import '../../../self_node_modules/bootstrap/scss/bootstrap.scss'
 
 
 $(document).ready(function() {

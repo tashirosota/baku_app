@@ -4,7 +4,7 @@ import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;console.log('Hello World from Webpacker')
 
-import 'bootstrap'
+import '../../../self_node_modules/bootstrap'
 import 'moment/moment'
 import 'moment/locale/ja'
 import Rails from 'rails-ujs';
@@ -13,9 +13,9 @@ import Rails from 'rails-ujs';
 Rails.start();
 
 // scss , css
-import 'bootstrap/scss/bootstrap.scss'
+import '../../../self_node_modules/bootstrap/scss/bootstrap.scss'
 import 'font-awesome/scss/font-awesome.scss'
-import 'bootstrap/dist/css/bootstrap.css'
+import '../../../self_node_modules/bootstrap/dist/css/bootstrap.css'
 import '../src/admin.scss'
 
 /**
