@@ -8,11 +8,10 @@ class Admin::SessionsController < Admin::ApplicationController
     if admin = Administrator.find_by(name: params[:name])
       if admin.authenticate(params[:password])
         session[:admin_id] = admin.id
-        redirect_to admin_root_path
-        return
+        return render ajax_redirect_to(admin_dashboard_path)
       end
     end
-    redirect_to admin_root_path
+    render json: { authenticate: 'false'}
   end
 
   def destroy

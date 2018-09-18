@@ -1,4 +1,6 @@
 class Admin::ApplicationController < ApplicationController
+  include AjaxHelper
+
   protect_from_forgery except: :create
   before_action :require_login
   layout 'admin'
