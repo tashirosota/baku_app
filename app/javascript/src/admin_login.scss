@@ -13,10 +13,14 @@ html,body{
   background: #fff;
   border: 1px solid #ccc;
 }
+.logo{
+  width: 320px;
+  margin-bottom: 5px;
 
+}
 #output{
   position: absolute;
-  width: 300px;
+  width: 400px;
   top: -75px;
   left: 0;
   color: #fff;
