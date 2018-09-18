@@ -5,6 +5,8 @@ html
       | Baku
     = csrf_meta_tags
     = csp_meta_tag
+    /mobileの時に小さくならないようにしてる
+    meta name="viewport" content="width=device-width,initial-scale=1"
     = javascript_pack_tag 'admin_login', media: 'all'
     = stylesheet_pack_tag 'admin_login'
   body

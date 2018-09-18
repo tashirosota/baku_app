@@ -1,4 +1,4 @@
-body{background: #eee url(http://subtlepatterns.com/patterns/sativa.png);}
+body{background: #eee url(http://subtlepatterns.com/patterns/light-veneer.png);}
 html,body{
   position: relative;
   height: 100%;
@@ -7,10 +7,10 @@ html,body{
 .login-container{
   position: relative;
   width: 400px;
-  margin: 80px auto;
-  padding: 20px 40px 40px;
+  margin: 150px auto;
+  padding: 30px 40px 70px;
   text-align: center;
-  background: #fff;
+  background: rgb(255, 254, 250);
   border: 1px solid #ccc;
 }
 .logo{
@@ -40,7 +40,7 @@ html,body{
   position: absolute;
   width: 100%;height: 100%;
   top: 3.5px;left: 0;
-  background: #fff;
+  background: rgb(255, 254, 250);
   z-index: -1;
   -webkit-transform: rotateZ(4deg);
   -moz-transform: rotateZ(4deg);
