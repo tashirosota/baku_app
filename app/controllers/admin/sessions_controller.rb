@@ -21,5 +21,6 @@ class Admin::SessionsController < Admin::ApplicationController
 
   private
 
+  def current_user;end
   def require_login;end
 end

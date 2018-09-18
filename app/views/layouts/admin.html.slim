@@ -31,8 +31,8 @@ html
                 a.header-brand href="./index.html"
                   / img.header-brand-img alt=("tabler logo") src="./demo/brand/tabler.svg" /
                 .d-flex.order-lg-2.ml-auto
-                  .nav-item.d-none.d-md-flex
-                    a.btn.btn-sm.btn-outline-primary href="https://github.com/tabler/tabler" target="_blank"  Source code
+                  / .nav-item.d-none.d-md-flex
+                  /   a.btn.btn-sm.btn-outline-primary href="https://github.com/tabler/tabler" target="_blank"  Source code
                   .dropdown.d-none.d-md-flex
                     a.nav-link.icon data-toggle="dropdown"
                       i.fe.fe-bell
@@ -62,92 +62,78 @@ html
                     a.nav-link.pr-0.leading-none data-toggle="dropdown" href="#"
                       / span.avatar style=("background-image: url(./demo/faces/female/25.jpg)")
                       span.ml-2.d-none.d-lg-block
-                        span.text-default Jane Pearson
+                        span.text-default = @current_user.name
                         small.text-muted.d-block.mt-1 Administrator
                     .dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
                       a.dropdown-item href="#"
                         i.dropdown-icon.fe.fe-user
-                        | Profile
+                        | パスワード変更
                       a.dropdown-item href="#"
                         i.dropdown-icon.fe.fe-settings
-                        | Settings
-                      a.dropdown-item href="#"
-                        span.float-right
-                          span.badge.badge-primary 6
-                        i.dropdown-icon.fe.fe-mail
-                        | Inbox
-                      a.dropdown-item href="#"
-                        i.dropdown-icon.fe.fe-send
-                        | Message
-                      .dropdown-divider
-                      a.dropdown-item href="#"
-                        i.dropdown-icon.fe.fe-help-circle
-                        | Need help?
-                      a.dropdown-item href="#"
-                        i.dropdown-icon.fe.fe-log-out
-                        | Sign out
+                        | ログアウト
+
                 a.header-toggler.d-lg-none.ml-3.ml-lg-0 data-target="#headerMenuCollapse" data-toggle="collapse" href="#"
                   span.header-toggler-icon
           #headerMenuCollapse.header.collapse.d-lg-flex.p-0
             .container
               .row.align-items-center
-                .col-lg-3.ml-auto
-                  form.input-icon.my-3.my-lg-0
-                    input.form-control.header-search placeholder="Search…" tabindex="1" type="search" /
-                    .input-icon-addon
-                      i.fe.fe-search
+                / .col-lg-3.ml-auto
+                /   form.input-icon.my-3.my-lg-0
+                /     input.form-control.header-search placeholder="Search…" tabindex="1" type="search" /
+                /     .input-icon-addon
+                /       i.fe.fe-search
                 .col-lg.order-lg-first
                   ul.nav.nav-tabs.border-0.flex-column.flex-lg-row
                     li.nav-item
-                      a.nav-link.active href="./index.html"
+                      a.nav-link href="./dashboard"
                         i.fe.fe-home
-                        | Home
+                        | ホーム
                     li.nav-item
-                      a.nav-link data-toggle="dropdown" href="javascript:void(0)"
-                        i.fe.fe-box
-                        | Interface
-                      .dropdown-menu.dropdown-menu-arrow
-                        a.dropdown-item href="./cards.html"  Cards design
-                        a.dropdown-item href="./charts.html"  Charts
-                        a.dropdown-item href="./pricing-cards.html"  Pricing cards
-                    li.nav-item.dropdown
-                      a.nav-link data-toggle="dropdown" href="javascript:void(0)"
-                        i.fe.fe-calendar
-                        | Components
-                      .dropdown-menu.dropdown-menu-arrow
-                        a.dropdown-item href="./maps.html"  Maps
-                        a.dropdown-item href="./icons.html"  Icons
-                        a.dropdown-item href="./store.html"  Store
-                        a.dropdown-item href="./blog.html"  Blog
-                        a.dropdown-item href="./carousel.html"  Carousel
-                    li.nav-item.dropdown
-                      a.nav-link data-toggle="dropdown" href="javascript:void(0)"
-                        i.fe.fe-file
-                        | Pages
-                      .dropdown-menu.dropdown-menu-arrow
-                        a.dropdown-item href="./profile.html"  Profile
-                        a.dropdown-item href="./login.html"  Login
-                        a.dropdown-item href="./register.html"  Register
-                        a.dropdown-item href="./forgot-password.html"  Forgot password
-                        a.dropdown-item href="./400.html"  400 error
-                        a.dropdown-item href="./401.html"  401 error
-                        a.dropdown-item href="./403.html"  403 error
-                        a.dropdown-item href="./404.html"  404 error
-                        a.dropdown-item href="./500.html"  500 error
-                        a.dropdown-item href="./503.html"  503 error
-                        a.dropdown-item href="./email.html"  Email
-                        a.dropdown-item href="./empty.html"  Empty page
-                        a.dropdown-item href="./rtl.html"  RTL mode
-                    li.nav-item.dropdown
-                      a.nav-link href="./form-elements.html"
-                        i.fe.fe-check-square
-                        | Forms
+                      a.nav-link href="./dashboard"
+                        i.fe.fe-home
+                        | ユーザー
                     li.nav-item
-                      a.nav-link href="./gallery.html"
-                        i.fe.fe-image
-                        | Gallery
+                      a.nav-link href="./dashboard"
+                        i.fe.fe-home
+                        | イベント
                     li.nav-item
-                      a.nav-link href="./docs/index.html"
-                        i.fe.fe-file-text
-                        | Documentation
+                      a.nav-link href="./dashboard"
+                        i.fe.fe-home
+                        | アーティスト
+                    li.nav-item
+                      a.nav-link href="./dashboard"
+                        i.fe.fe-home
+                        | オファー
+                    li.nav-item
+                      a.nav-link href="./dashboard"
+                        i.fe.fe-home
+                        | フレンド
+                    li.nav-item
+                      a.nav-link href="./dashboard"
+                        i.fe.fe-home
+                        | コラボレーター
+                    / 権限によっては出さない処理を書く
+                    li.nav-item
+                      a.nav-link href="./dashboard"
+                        i.fe.fe-home
+                        | 管理者管理
+                    / li.nav-item.dropdown
+                    /   a.nav-link data-toggle="dropdown" href="javascript:void(0)"
+                    /     i.fe.fe-file
+                    /     | Pages
+                    /   .dropdown-menu.dropdown-menu-arrow
+                    /     a.dropdown-item href="./profile.html"  Profile
+                    /     a.dropdown-item href="./login.html"  Login
+                    /     a.dropdown-item href="./register.html"  Register
+                    /     a.dropdown-item href="./forgot-password.html"  Forgot password
+                    /     a.dropdown-item href="./400.html"  400 error
+                    /     a.dropdown-item href="./401.html"  401 error
+                    /     a.dropdown-item href="./403.html"  403 error
+                    /     a.dropdown-item href="./404.html"  404 error
+                    /     a.dropdown-item href="./500.html"  500 error
+                    /     a.dropdown-item href="./503.html"  503 error
+                    /     a.dropdown-item href="./email.html"  Email
+                    /     a.dropdown-item href="./empty.html"  Empty page
+                    /     a.dropdown-item href="./rtl.html"  RTL mode
+
           = yield
