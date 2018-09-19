@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'client/dashboard#index'
   get 'login', to: 'client/sessions#new'
   post 'login', to: 'client/sessions#create'
-  post 'logout', to: 'client/sessions#destroy'
+  get 'logout', to: 'client/sessions#destroy'
 
   #client側route(pathにclientは含めないこと)
   resources :events, controller: 'client/events'
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
-    delete 'logout', to: 'sessions#destroy'
+    get 'logout', to: 'sessions#destroy'
 
     root 'dashboard#index'
     get 'dashboard', to: 'dashboard#index'
@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
     resources :administrators
 
+    get 'password', to: 'password#edit'
     post 'password', to: 'password#update'
   end
 end

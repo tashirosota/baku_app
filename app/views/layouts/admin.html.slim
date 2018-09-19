@@ -29,7 +29,7 @@ html
             .container
               .d-flex
                 a.header-brand href="./index.html"
-                  / img.header-brand-img alt=("tabler logo") src="./demo/brand/tabler.svg" /
+                  img.header-brand-img alt=("tabler logo") src="/バクロゴ.png" /
                 .d-flex.order-lg-2.ml-auto
                   / .nav-item.d-none.d-md-flex
                   /   a.btn.btn-sm.btn-outline-primary href="https://github.com/tabler/tabler" target="_blank"  Source code
@@ -39,19 +39,19 @@ html
                       span.nav-unread
                     .dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
                       a.dropdown-item.d-flex href="#"
-                        / span.avatar.mr-3.align-self-center style=("background-image: url(demo/faces/male/41.jpg)")
+                        span.avatar.mr-3.align-self-center style=("background-image: url(/dummy_avatar.png)")
                         div
                           strong Nathan
                           | pushed new commit: Fix page load performance issue.
                           .small.text-muted 10 minutes ago
                       a.dropdown-item.d-flex href="#"
-                        / span.avatar.mr-3.align-self-center style=("background-image: url(demo/faces/female/1.jpg)")
+                        span.avatar.mr-3.align-self-center style=("background-image: url(/dummy_avatar.png)")
                         div
                           strong Alice
                           | started new task: Tabler UI design.
                           .small.text-muted 1 hour ago
                       a.dropdown-item.d-flex href="#"
-                        / span.avatar.mr-3.align-self-center style=("background-image: url(demo/faces/female/18.jpg)")
+                        span.avatar.mr-3.align-self-center style=("background-image: url(/dummy_avatar.png)")
                         div
                           strong Rose
                           | deployed new version of NodeJS REST Api V3
@@ -60,16 +60,16 @@ html
                       a.dropdown-item.text-center href="#"  Mark all as read
                   .dropdown
                     a.nav-link.pr-0.leading-none data-toggle="dropdown" href="#"
-                      / span.avatar style=("background-image: url(./demo/faces/female/25.jpg)")
+                      span.avatar style=("background-image: url(/dummy_avatar.png)")
                       span.ml-2.d-none.d-lg-block
                         span.text-default = @current_user.name
                         small.text-muted.d-block.mt-1 Administrator
                     .dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
-                      a.dropdown-item href="#"
-                        i.dropdown-icon.fe.fe-user
+                      a.dropdown-item href="/admin/password"
+                        i.dropdown-icon.fa.fa-key
                         | パスワード変更
-                      a.dropdown-item href="#"
-                        i.dropdown-icon.fe.fe-settings
+                      a.dropdown-item href="/admin/logout"
+                        i.dropdown-icon.fe.fe-log-out
                         | ログアウト
 
                 a.header-toggler.d-lg-none.ml-3.ml-lg-0 data-target="#headerMenuCollapse" data-toggle="collapse" href="#"
@@ -86,36 +86,36 @@ html
                   ul.nav.nav-tabs.border-0.flex-column.flex-lg-row
                     li.nav-item
                       a.nav-link href="./dashboard"
-                        i.fe.fe-home
+                        i.fa.fa-home
                         | ホーム
                     li.nav-item
-                      a.nav-link href="./dashboard"
-                        i.fe.fe-home
+                      a.nav-link href="./users"
+                        i.fa.fa-group
                         | ユーザー
                     li.nav-item
-                      a.nav-link href="./dashboard"
-                        i.fe.fe-home
+                      a.nav-link href="./events"
+                        i.fa.fa-file-sound-o
                         | イベント
                     li.nav-item
-                      a.nav-link href="./dashboard"
-                        i.fe.fe-home
+                      a.nav-link href="./artists"
+                        i.fa.fa-microphone
                         | アーティスト
                     li.nav-item
-                      a.nav-link href="./dashboard"
-                        i.fe.fe-home
+                      a.nav-link href="./offers"
+                        i.fa.fa-paper-plane-o
                         | オファー
                     li.nav-item
-                      a.nav-link href="./dashboard"
-                        i.fe.fe-home
+                      a.nav-link href="./friends"
+                        i.fe.fe-users
                         | フレンド
                     li.nav-item
-                      a.nav-link href="./dashboard"
-                        i.fe.fe-home
+                      a.nav-link href="./collaborators"
+                        i.fa.fa-handshake-o
                         | コラボレーター
                     / 権限によっては出さない処理を書く
                     li.nav-item
-                      a.nav-link href="./dashboard"
-                        i.fe.fe-home
+                      a.nav-link href="./administrators"
+                        i.fa.fa-user-secret
                         | 管理者管理
                     / li.nav-item.dropdown
                     /   a.nav-link data-toggle="dropdown" href="javascript:void(0)"
