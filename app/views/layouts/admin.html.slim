@@ -31,8 +31,6 @@ html
                 a.header-brand href="./index.html"
                   img.header-brand-img alt=("tabler logo") src="/バクロゴ.png" /
                 .d-flex.order-lg-2.ml-auto
-                  / .nav-item.d-none.d-md-flex
-                  /   a.btn.btn-sm.btn-outline-primary href="https://github.com/tabler/tabler" target="_blank"  Source code
                   .dropdown.d-none.d-md-flex
                     a.nav-link.icon data-toggle="dropdown"
                       i.fe.fe-bell
@@ -77,39 +75,34 @@ html
           #headerMenuCollapse.header.collapse.d-lg-flex.p-0
             .container
               .row.align-items-center
-                / .col-lg-3.ml-auto
-                /   form.input-icon.my-3.my-lg-0
-                /     input.form-control.header-search placeholder="Search…" tabindex="1" type="search" /
-                /     .input-icon-addon
-                /       i.fe.fe-search
                 .col-lg.order-lg-first
                   ul.nav.nav-tabs.border-0.flex-column.flex-lg-row
                     li.nav-item
-                      a.nav-link href="./dashboard"
+                      a.nav-link href="/admin/dashboard"
                         i.fa.fa-home
                         | ホーム
                     li.nav-item
-                      a.nav-link href="./users"
+                      a.nav-link href="/admin/users"
                         i.fa.fa-group
                         | ユーザー
                     li.nav-item
-                      a.nav-link href="./events"
+                      a.nav-link href="/admin/events"
                         i.fa.fa-file-sound-o
                         | イベント
                     li.nav-item
-                      a.nav-link href="./artists"
+                      a.nav-link href="/admin/artists"
                         i.fa.fa-microphone
                         | アーティスト
                     li.nav-item
-                      a.nav-link href="./offers"
+                      a.nav-link href="/admin/offers"
                         i.fa.fa-paper-plane-o
                         | オファー
                     li.nav-item
-                      a.nav-link href="./friends"
+                      a.nav-link href="/admin/friends"
                         i.fe.fe-users
                         | フレンド
                     li.nav-item
-                      a.nav-link href="./collaborators"
+                      a.nav-link href="/admin/collaborators"
                         i.fa.fa-handshake-o
                         | コラボレーター
                     / 権限によっては出さない処理を書く

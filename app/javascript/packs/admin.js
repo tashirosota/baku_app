@@ -36,6 +36,19 @@ let hexToRgba = function(hex, opacity) {
  *
  */
 $(document).ready(function() {
+
+    //現在のnavbarをactiveにする処理
+    $(function(){
+        $('#headerMenuCollapse li a').each(function(){
+            var $href = $(this).attr('href');
+            if(location.href.match($href)) {
+                $(this).addClass('active');
+            } else {
+                $(this).removeClass('active');
+            }
+        });
+    });
+
     /** Constant div card */
     const DIV_CARD = 'div.card';
 
