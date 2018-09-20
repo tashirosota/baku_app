@@ -26,8 +26,12 @@ Rails.application.routes.draw do
     get 'events', to: 'events#index'
     get 'events/:id', to: 'events#show'
 
-    get 'users', to: 'users#index'
-    get 'users/:id', to: 'users#show'
+    get 'eventers', to: 'eventers#index'
+    get 'eventers/:id', to: 'eventers#show'
+
+    get 'offers', to: 'offers#index'
+
+    get 'friends', to: 'artists#index'
 
     get 'artists', to: 'artists#index'
     get 'artists/:id', to: 'artists#show'
