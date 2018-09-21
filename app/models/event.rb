@@ -12,7 +12,7 @@
 #  concept    :text
 #  images     :string
 #  status     :string
-#  user_id    :integer
+#  eventer_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -24,7 +24,7 @@ class Event < ApplicationRecord
   validates :title, presence: true
   validates :concept, length: { maximum: 240 }
 
-  enumerize :status, in: %w(plan before_offered offering fixed), scope: true, default: 'plan', predicates: true
+  enumerize :status, in: %w(plan before_offered offering fixed finished), scope: true, default: 'plan', predicates: true
 
   has_many :offers
   belongs_to :eventer

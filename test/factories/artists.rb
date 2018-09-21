@@ -8,7 +8,7 @@
 #  genre        :string
 #  mv_urls      :string
 #  artist_image :string
-#  user_id      :integer
+#  eventer_id   :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

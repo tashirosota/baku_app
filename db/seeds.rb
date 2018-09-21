@@ -7,11 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-Administrator.create(name: '運営アカウント', password: 'password', password_confirmation: 'password')
+Administrator.create(name: 'root', role: 'root', password: 'password', password_confirmation: 'password')
+Administrator.create(name: 'tashiro', role: 'admin', password: 'password', password_confirmation: 'password')
+Administrator.create(name: '運営アカウント', role: 'viewer', password: 'password', password_confirmation: 'password')
+
 
 10.times do |i|
-  var = "@organizer#{i}"
-  organizer = Eventer.create!(name: "テストユーザ-#{i}", profile: 'テストアカウントです')
-  eval("var = organizer")
+  eventer = Eventer.create!(name: "テストユーザ-#{i}", profile: 'テストアカウントです')
+  10.times {eventer.artists.create!(name: Faker::Artist.name, genre: Faker::Music.genre)}
+  10.times {eventer.events.create!(title: Faker::Artist.name, status: Event.status.values.sample)}
+  eventer.events.each do |event|
+    3.times {event.offers.create!(artist: eventer.artists.sample, status: Offer.status.values.sample)}
+  end
 end
 
+Eventer.all.each do |i|
+  3.times {Friend.create!(to_user: i, from_user: Eventer.all.sample, status: Friend.status.values.sample)}
+end
+
+Event.all.each do |i|
+  i.collaborators.create(eventer: Eventer.all.sample)
+end

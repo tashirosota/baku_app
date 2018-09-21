@@ -8,7 +8,7 @@
 #  genre        :string
 #  mv_urls      :string
 #  artist_image :string
-#  user_id      :integer
+#  eventer_id   :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
@@ -20,13 +20,13 @@ class Artist < ApplicationRecord
 
   # mount_uploader :artist_image, ArtistImageUploader #carrierwave設定の時にまとめてやる
   validates :name, presence: true
-  validates :web_url, format: /\A#{URI.regexp(%w(http https))}\z/
+  validates :web_url, format: {with: /\A#{URI.regexp(%w(http https))}\z/}, allow_blank: true
   validates :genre, presence: true
 
   has_many :offers
   belongs_to :eventer
 
   def valid_mv_urls
-    return true unless valid_mv_urls
+    return true unless mv_urls
   end
 end

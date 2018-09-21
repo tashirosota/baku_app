@@ -10,7 +10,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.text :concept , comment: 'コンセプト(概要に組み込む)'
       t.string :images , comment: 'フライヤーやタイムテーブルを配列で格納'
       t.string :status, comment: '状態 %(完了 オファー中 構想)'
-      t.integer :user_id, comment: '主催者id'
+      t.integer :eventer_id, comment: '主催者id'
       t.timestamps
     end
   end

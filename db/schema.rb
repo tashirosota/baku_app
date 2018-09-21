@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 2018_09_16_015356) do
     t.string "genre"
     t.string "mv_urls", comment: "mv(配列で格納)"
     t.string "artist_image", comment: "アー写"
-    t.integer "user_id", comment: "登録者id"
+    t.integer "eventer_id", comment: "登録者id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "collaborators", force: :cascade do |t|
-    t.integer "user_id", comment: "主催者id"
+    t.integer "eventer_id", comment: "共済者id"
     t.integer "event_id", comment: "イベントid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_09_16_015356) do
     t.text "concept", comment: "コンセプト(概要に組み込む)"
     t.string "images", comment: "フライヤーやタイムテーブルを配列で格納"
     t.string "status", comment: "状態 %(完了 オファー中 構想)"
-    t.integer "user_id", comment: "主催者id"
+    t.integer "eventer_id", comment: "主催者id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
