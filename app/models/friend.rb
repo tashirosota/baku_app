@@ -11,10 +11,7 @@
 #
 
 class Friend < ApplicationRecord
-  extend Enumerize
-
-  enumerize :status, in: %w(request rejected approved goodbye), scope: true, predicates: true
-
+  include AasmFriend
   belongs_to :from_user, class_name: 'Eventer', foreign_key: :from_user_id
   belongs_to :to_user, class_name: 'Eventer', foreign_key: :to_user_id
 end

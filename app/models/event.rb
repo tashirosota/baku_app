@@ -18,13 +18,11 @@
 #
 
 class Event < ApplicationRecord
-  extend Enumerize
+  include AasmEvent
   # mount_uploader :images, EventImageUploader #carrierwave設定の時にまとめてやる
 
   validates :title, presence: true
   validates :concept, length: { maximum: 240 }
-
-  enumerize :status, in: %w(plan before_offered offering fixed finished), scope: true, default: 'plan', predicates: true
 
   has_many :offers
   belongs_to :eventer

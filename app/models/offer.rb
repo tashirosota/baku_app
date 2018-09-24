@@ -12,8 +12,7 @@
 #
 
 class Offer < ApplicationRecord
-  extend Enumerize
+  include AasmOffer
   belongs_to :event
   belongs_to :artist
-  enumerize :status, in: %w(candidate offering ng ok cancel), scope: true, default: 'candidate', predicates: true
 end
