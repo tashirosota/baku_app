@@ -19,7 +19,7 @@
 
 class Event < ApplicationRecord
   include AasmEvent
-  # mount_uploader :images, EventImageUploader #carrierwave設定の時にまとめてやる
+  mount_uploader :images, EventUploader #carrierwave設定の時にまとめてやる
 
   validates :title, presence: true
   validates :concept, length: { maximum: 240 }

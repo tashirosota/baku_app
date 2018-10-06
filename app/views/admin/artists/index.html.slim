@@ -3,12 +3,17 @@
     .page-header
       h1.page-title
         | Artists
+      form.form-inline.pl-md-auto.ml-md-auto
+        = search_form_for @q, url: admin_artists_path do |form|
+          = form.search_field :name_cont, placeholder: "Name", class: 'form-control mr-sm-2'
+          = form.submit 'Search', class: 'button btn btn-outline-info my-2 my-sm-0 '
     .card-container
       - @artists&.each do |artist|
         .col-md-4.col-xl-3
           .card
             .card-header
-              h3.card-title
+              = image_tag(artist.artist_image.url , class: 'avatar')
+              h3.card-title.avatar-side-content
                 = artist.name
               .card-options
                 = artist.genre
@@ -29,5 +34,6 @@
             .card-footer
               = "by #{artist.eventer.name} at #{artist.created_at.strftime('%y/%m/%d')}"
     .col-sm-12
+      = "合計#{@total_records}件 現在 #{@current_page}頁目で#{@current_start}件目~#{@current_end}件目まで表示中"
       .pagination-position
         = paginate @artists

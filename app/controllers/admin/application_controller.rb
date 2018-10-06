@@ -14,4 +14,14 @@ class Admin::ApplicationController < ApplicationController
   def require_login
     redirect_to admin_login_path unless session[:admin_id]
   end
+
+  #ページネーションで件数を表示したい時
+  def pagination_count(model)
+    @total_records = model.count
+    # 最初のページの場合　params[:page]}　が存在しないので　1ページ目とする。
+    params[:page].blank? ? @current_page = 1 :  @current_page  = params[:page].to_i
+    if @current_page == 0 then @current_page += 1 end
+    @current_start = Kaminari.config.default_per_page * (@current_page - 1 ) + 1
+    @current_end   = @current_start + Kaminari.config.default_per_page - 1
+  end
 end

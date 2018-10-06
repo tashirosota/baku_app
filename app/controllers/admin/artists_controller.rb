@@ -1,6 +1,8 @@
 class Admin::ArtistsController < Admin::ApplicationController
   def index
-    @artists = Artist.order(created_at: :desc).page(params[:page])
+    @q = Artist.ransack(params[:q])
+    @artists = @q.result(distinct: true).order(created_at: :desc).page(params[:page])
+    pagination_count(Artist)
   end
 
   def show

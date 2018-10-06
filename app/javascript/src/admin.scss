@@ -41,6 +41,23 @@ Dashboard UI
   --font-family-monospace: Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+// by self
+
+
+.pagination-position{
+  float: right;
+}
+
+.avatar-side-content{
+  margin-left: 5px
+}
+
+.search-position-right{
+  margin-left: auto;
+}
+
+//
+
 *,
 *::before,
 *::after {
@@ -83,10 +100,6 @@ hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible;
-}
-
-.pagination-position{
-  float: right;
 }
 
 .card-container {
@@ -4519,10 +4532,6 @@ input[type="button"].btn-block {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   padding: 1.5rem;
-}
-
-.card-title {
-  margin-bottom: 1.5rem;
 }
 
 .card-subtitle {

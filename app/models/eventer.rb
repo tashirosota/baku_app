@@ -10,11 +10,10 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-
 class Eventer < ApplicationRecord
   # snsのカラムをvalidationしようと思ってるけど、そもそも更新を紐づけたときだけにしたら必要ないお
   before_validation :valid_twitter_url
-  # mount_uploader :avatar, AvatarUploader #carrierwave設定の時にまとめてやる
+  mount_uploader :avatar, EventerUploader #carrierwave設定の時にまとめてやる
   validates :name, presence: true, uniqueness: true
   validates :profile, presence: true, length: { maximum: 240 }
 

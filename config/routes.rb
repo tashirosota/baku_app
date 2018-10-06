@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
     get 'offers', to: 'offers#index'
 
-    get 'friends', to: 'artists#index'
+    get 'friends', to: 'friends#index'
 
     get 'artists', to: 'artists#index'
     get 'artists/:id', to: 'artists#show'

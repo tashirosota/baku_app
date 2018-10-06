@@ -1,0 +1,2 @@
+class EventUploader < ApplicationUploader
+end

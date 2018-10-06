@@ -18,7 +18,7 @@ class Artist < ApplicationRecord
   # youtubeでバリデーション
   before_validation :valid_mv_urls
 
-  # mount_uploader :artist_image, ArtistImageUploader #carrierwave設定の時にまとめてやる
+  mount_uploader :artist_image, ArtistUploader #carrierwave設定の時にまとめてやる
   validates :name, presence: true
   validates :web_url, format: { with: /\A#{URI.regexp(%w(http https))}\z/ }, allow_blank: true
   validates :genre, presence: true
