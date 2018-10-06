@@ -15,14 +15,14 @@ Administrator.create(name: '運営アカウント', role: 'viewer', password: 'p
 10.times do |i|
   eventer = Eventer.create!(name: "テストユーザ-#{i}", profile: 'テストアカウントです')
   10.times {eventer.artists.create!(name: Faker::Artist.name, genre: Faker::Music.genre)}
-  10.times {eventer.events.create!(title: Faker::Artist.name, status: Event.status.values.sample)}
+  10.times {eventer.events.create!(title: Faker::Artist.name)}
   eventer.events.each do |event|
-    3.times {event.offers.create!(artist: eventer.artists.sample, status: Offer.status.values.sample)}
+    3.times {event.offers.create!(artist: eventer.artists.sample)}
   end
 end
 
 Eventer.all.each do |i|
-  3.times {Friend.create!(to_user: i, from_user: Eventer.all.sample, status: Friend.status.values.sample)}
+  3.times {Friend.create!(to_user: i, from_user: Eventer.all.sample)}
 end
 
 Event.all.each do |i|

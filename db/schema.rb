@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_16_015356) do
+ActiveRecord::Schema.define(version: 2018_09_24_061855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,8 +59,13 @@ ActiveRecord::Schema.define(version: 2018_09_16_015356) do
     t.integer "door", comment: "当日料金"
     t.text "concept", comment: "コンセプト(概要に組み込む)"
     t.string "images", comment: "フライヤーやタイムテーブルを配列で格納"
+<<<<<<< HEAD
     t.string "status", comment: "状態 %(完了 オファー中 構想)"
     t.integer "user_id", comment: "主催者id"
+=======
+    t.string "aasm_state", comment: "状態 %(完了 オファー中 構想)"
+    t.integer "eventer_id", comment: "主催者id"
+>>>>>>> 5aaf9af1f58834fe882cca01360ebdb5d347ca8e
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,16 +73,25 @@ ActiveRecord::Schema.define(version: 2018_09_16_015356) do
   create_table "friends", force: :cascade do |t|
     t.integer "from_user_id", null: false
     t.integer "to_user_id", null: false
-    t.string "status", comment: "状態 %(申請中 却下 友達 解除)"
+    t.string "aasm_state", comment: "状態 %(申請中 却下 友達 解除)"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "offers", force: :cascade do |t|
     t.string "condition", comment: "出演条件"
-    t.string "status", comment: "状態%(候補 オファー中 拒否 決定 キャンセル)"
+    t.string "aasm_state", comment: "状態%(候補 オファー中 拒否 決定 キャンセル)"
     t.integer "event_id", comment: "イベントid"
     t.integer "artist_id", comment: "アーティストid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "state_histories", force: :cascade do |t|
+    t.string "state"
+    t.string "previous_state"
+    t.integer "stateable_id"
+    t.string "stateable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

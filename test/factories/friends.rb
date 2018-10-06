@@ -5,7 +5,7 @@
 #  id           :bigint(8)        not null, primary key
 #  from_user_id :integer          not null
 #  to_user_id   :integer          not null
-#  status       :string
+#  aasm_state   :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

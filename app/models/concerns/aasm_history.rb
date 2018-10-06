@@ -16,5 +16,4 @@ module AasmHistory
     self.aasm_state = new_state_name
     super
   end
-  # rubocop:enable Metrics/ParameterLists, Lint/UnderscorePrefixedVariableName
 end

@@ -11,7 +11,7 @@ class Admin::SessionsController < Admin::ApplicationController
         return render ajax_redirect_to(admin_dashboard_path)
       end
     end
-    render json: { authenticate: 'false'}
+    render json: { authenticate: 'false' }
   end
 
   def destroy
@@ -21,6 +21,7 @@ class Admin::SessionsController < Admin::ApplicationController
 
   private
 
-  def current_user;end
-  def require_login;end
+  def current_user; end
+
+  def require_login; end
 end
