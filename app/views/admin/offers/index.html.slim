@@ -3,3 +3,19 @@
     .page-header
       h1.page-title
         | Offers
+    .card-container
+      - @offers&.each do |offer|
+        .col-md-4.col-xl-3
+          .card
+            .card-status.bg-orange
+            .card-header
+              h3.card-title
+                = offer.event.title
+              .card-options
+            .card-body
+              = "#{offer.artist.name} : #{offer.aasm_state}"
+            .card-footer
+              = "主催 : #{offer.by}"
+    .col-sm-12
+      .pagination-position
+        = paginate @offers

@@ -3,3 +3,21 @@
     .page-header
       h1.page-title
         | Collaborators
+    .card-container
+      - @collaborators&.each do |collaborator|
+        .col-md-4.col-xl-3
+          .card
+            .card-status.bg-purple
+            .card-header
+              h3.card-title
+                = collaborator.eventer.name
+              .card-options
+                a href="#"
+                  = collaborator.eventer_id
+            .card-body
+              = collaborator.event.title
+            .card-footer
+              = "twitter : #{collaborator.eventer.twitter_url}"
+    .col-sm-12
+      .pagination-position
+        = paginate @collaborators

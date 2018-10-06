@@ -11,6 +11,7 @@
       - @artists&.each do |artist|
         .col-md-4.col-xl-3
           .card
+            .card-status.bg-blue
             .card-header
               = image_tag(artist.artist_image.url , class: 'avatar')
               h3.card-title.avatar-side-content
