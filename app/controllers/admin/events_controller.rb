@@ -1,6 +1,6 @@
 class Admin::EventsController < Admin::ApplicationController
   def index
-    @events = Event.order(created_at: :desc).page(params[:page]).per(100)
+    @events = Event.order(created_at: :desc).page(params[:page])
   end
 
   def show

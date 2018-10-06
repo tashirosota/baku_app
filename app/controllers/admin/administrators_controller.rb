@@ -2,7 +2,7 @@ class Admin::AdministratorsController < Admin::ApplicationController
   protect_from_forgery with: :null_session
 
   def index
-    @administrators = Administrator.order(created_at: :desc).page(params[:page]).per(100)
+    @administrators = Administrator.order(created_at: :desc).page(params[:page])
   end
 
   def new

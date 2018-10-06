@@ -1,6 +1,6 @@
 class Admin::ArtistsController < Admin::ApplicationController
   def index
-    @artists = Artist.order(created_at: :desc).page(params[:page]).per(100)
+    @artists = Artist.order(created_at: :desc).page(params[:page])
   end
 
   def show

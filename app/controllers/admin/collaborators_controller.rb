@@ -1,6 +1,6 @@
 class Admin::CollaboratorsController < Admin::ApplicationController
   def index
-    @collaborators = Collaborator.order(created_at: :desc).page(params[:page]).per(100)
+    @collaborators = Collaborator.order(created_at: :desc).page(params[:page])
   end
 
   def show
