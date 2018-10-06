@@ -27,7 +27,7 @@
               br
               |MVs:
               - if artist.mv_urls.present?
-                - - Array(artist.mv_urls).each do |mv|
+                - Array(artist.mv_urls).each do |mv|
                   = "  #{mv}"
               - else
                 |  登録されてません。

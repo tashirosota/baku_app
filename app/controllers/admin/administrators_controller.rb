@@ -2,7 +2,9 @@ class Admin::AdministratorsController < Admin::ApplicationController
   protect_from_forgery with: :null_session
 
   def index
-    @administrators = Administrator.order(created_at: :desc).page(params[:page])
+    @q = Administrator.ransack(params[:q])
+    @administrators = @q.result(distinct: true).order(created_at: :desc).page(params[:page])
+    pagination_count(Administrator)
   end
 
   def new
@@ -18,15 +20,17 @@ class Admin::AdministratorsController < Admin::ApplicationController
   def edit; end
 
   def update
-    return render :edit unless @administrator.update(admin_params)
+    return render :edit unless target_administrator.update(admin_params)
     redirect_to admin_administrators_path, notice: 'Administrator updated successfully.'
   end
 
   def destroy
-    message = if @administrator.id == 1
+    message = if target_administrator.role == 'root'
                 'root管理者は削除できません。'
+              elsif target_administrator == current_user
+                '自分自身の削除はできません。'
               else
-                @administrator.destroy ? 'Administrator deleted successfully.' : 'Administrator deleted unsuccessfully.'
+                target_administrator.destroy ? 'Administrator deleted successfully.' : 'Administrator deleted unsuccessfully.'
               end
     redirect_to admin_administrators_path, notice: message
   end
@@ -37,7 +41,7 @@ class Admin::AdministratorsController < Admin::ApplicationController
     params.require(:administrator).permit(:name, :password, :password_confirmation, :role)
   end
 
-  def current_administrator
+  def target_administrator
     @administrator = Administrator.find(params[:id])
   end
 end

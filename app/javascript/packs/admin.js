@@ -7,7 +7,8 @@ window.$ = $;console.log('Hello World from Webpacker')
 import '../../../self_node_modules/bootstrap'
 import 'moment/moment'
 import 'moment/locale/ja'
-import Rails from 'rails-ujs';
+import Rails from 'rails-ujs'
+Rails.start();
 
 
 Rails.start();

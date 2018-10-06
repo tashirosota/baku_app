@@ -3,28 +3,26 @@
     .page-header
       h1.page-title
         | Administrators
-    .row.row-cards
-      .col-lg-12
-        .card
-          .card-header
-            h3.card-title Sort menu
-          / # この下に検索諸々のボタンやらを配置
-          .table-responsive
-            table.table.card-table.table-striped.table-vcenter
-              thead
-                tr
-                  th 名前
-                  th 権限
-                  th 作成日
-                  th 更新日
-                  th
-              tbody
-                - @administrators.each do |admin|
-                  tr
-                    td = admin.name
-                    td = admin.role
-                    td = admin.created_at
-                    td = admin.updated_at
-                    td.w-1
-                      a.icon href="#"
-                        i.fe.fe-trash
+      = link_to 'New', new_admin_administrator_path, class: 'button btn btn-outline-danger', style: 'margin-left: 10px'
+      form.form-inline.pl-md-auto.ml-md-auto
+        = search_form_for @q, url: admin_administrators_path do |form|
+          = form.search_field :name_cont, placeholder: "Name", class: 'form-control mr-sm-2'
+          = form.submit 'Search', class: 'button btn btn-outline-info my-2 my-sm-0'
+    .card-container
+      - @administrators&.each do |admin|
+        .col-md-4.col-xl-3
+          .card
+            .card-status.bg-purple
+            .card-header
+              h3.card-title
+                = admin.name
+              .card-options
+                = link_to content_tag(:i, '', class: 'fe fe-edit'), edit_admin_administrator_path(admin), style: 'margin-right: 10px; color: #000000;'
+                = link_to content_tag(:i, '', class: 'fa fa-trash'), admin_administrator_path(admin), method: :delete, style: 'margin-right: 10px; color: #000000;', data: {confirm: '削除してもよろしいですか?'}
+                = admin.role
+            .card-footer
+              = "作成: #{admin.created_at.strftime('%y/%m/%d')} / 更新: #{admin.updated_at.strftime('%y/%m/%d')}"
+    .col-sm-12
+      = "合計#{@total_records}件 現在 #{@current_page}頁目で#{@current_start}件目~#{@current_end}件目まで表示中"
+      .pagination-position
+        = paginate @administrators
