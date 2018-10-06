@@ -5,8 +5,9 @@
         | Eventers
     .card-container
       - @eventers&.each do |eventer|
-        .col-md-6.col-xl-4
+        .col-md-4.col-xl-3
           .card
+            .card-status.bg-red
             .card-header
               h3.card-title
                 = eventer.name
@@ -17,9 +18,7 @@
               = eventer.profile
 
             .card-footer
-              = eventer.created_at.strftime('%Y/%m/%d')
+              = "twitter : #{eventer.twitter_url}"
     .col-sm-12
       .pagination-position
         = paginate @eventers
-
-

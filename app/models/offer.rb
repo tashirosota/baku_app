@@ -15,4 +15,8 @@ class Offer < ApplicationRecord
   include AasmOffer
   belongs_to :event
   belongs_to :artist
+
+  def by
+    event.eventer.name
+  end
 end

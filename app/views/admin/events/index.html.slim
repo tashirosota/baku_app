@@ -3,3 +3,31 @@
     .page-header
       h1.page-title
         | Events
+    .card-container
+      - @events&.each do |event|
+        .col-md-4.col-xl-3
+          .card
+            .card-status.bg-green
+            .card-header
+              h3.card-title
+                = event.title.present? ? event.title : "-タイトル未定-"
+              .card-options
+                = event.date
+            .card-body
+              = "イベント名"
+              br
+              |op/st :
+              = event.open.present? ? event.open : "未定/"
+              = event.start.present? ? event.start : "未定"
+              br
+              |adv/door
+              = event.adv.present? ? event.adv : "未定/"
+              = event.door.present? ? event.door : "未定"
+              br
+              = event.concept.present? ? event.concept : "コンセプト"
+              br
+            .card-footer
+              = "主催 : #{event.eventer.name}"
+    .col-sm-12
+      .pagination-position
+        = paginate @events
