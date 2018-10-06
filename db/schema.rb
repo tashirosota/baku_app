@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 2018_09_24_061855) do
     t.string "genre"
     t.string "mv_urls", comment: "mv(配列で格納)"
     t.string "artist_image", comment: "アー写"
-    t.integer "user_id", comment: "登録者id"
+    t.integer "eventer_id", comment: "登録者id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "collaborators", force: :cascade do |t|
-    t.integer "user_id", comment: "主催者id"
+    t.integer "eventer_id", comment: "共済者id"
     t.integer "event_id", comment: "イベントid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -60,12 +60,17 @@ ActiveRecord::Schema.define(version: 2018_09_24_061855) do
     t.text "concept", comment: "コンセプト(概要に組み込む)"
     t.string "images", comment: "フライヤーやタイムテーブルを配列で格納"
 <<<<<<< HEAD
+<<<<<<< HEAD
     t.string "status", comment: "状態 %(完了 オファー中 構想)"
     t.integer "user_id", comment: "主催者id"
 =======
     t.string "aasm_state", comment: "状態 %(完了 オファー中 構想)"
     t.integer "eventer_id", comment: "主催者id"
 >>>>>>> 5aaf9af1f58834fe882cca01360ebdb5d347ca8e
+=======
+    t.string "aasm_state", comment: "状態 %(完了 オファー中 構想)"
+    t.integer "eventer_id", comment: "主催者id"
+>>>>>>> 0a24b23... add eventers#index
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,5 +1,6 @@
 *.rbc
 capybara-*.html
+
 .rspec
 /log
 /tmp
@@ -8,6 +9,30 @@ capybara-*.html
 /spec/tmp
 *.orig
 rerun.txt
+*~
+.DS_Store
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore bundler gems.
+vendor/bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# Ignore other unneeded files.
+doc/
+*.swp
+*~
+.project
+.idea
+.secret
 pickle-email-*.html
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
