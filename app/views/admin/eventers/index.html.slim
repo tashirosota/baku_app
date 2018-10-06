@@ -2,4 +2,88 @@
   .container
     .page-header
       h1.page-title
-        | Eventers
+        | Eventer
+    .card-container
+      .col-md-6.col-xl-4
+        .card
+          .card-header
+            h3.card-title
+            .card-options
+          .card-body
+          .card-footer
+      .col-md-6.col-xl-4
+        .card
+          .card-header
+            h3.card-title name
+            .card-options
+              a href="#" Detail
+          .card-body
+            | Describe here any profile
+          .card-footer
+            | footer
+      .col-md-6.col-xl-4
+        .card
+          .card-header
+            h3.card-title name
+            .card-options
+              a href="#" Detail
+          .card-body
+            | Describe here any profile
+          .card-footer
+            | footer
+      .col-md-6.col-xl-4
+        .card
+          .card-header
+            h3.card-title name
+            .card-options
+              a href="#" Detail
+          .card-body
+            | Describe here any profile
+          .card-footer
+            | footer
+      .col-md-6.col-xl-4
+        .card
+          .card-header
+            h3.card-title name
+            .card-options
+              a href="#" Detail
+          .card-body
+            | Describe here any profile
+          .card-footer
+            | footer
+      .col-md-6.col-xl-4
+        .card
+          .card-header
+            h3.card-title name
+            .card-options
+              a href="#" Detail
+          .card-body
+            | Describe here any profile
+          .card-footer
+            | footer
+
+/flex-wrapを使ってカードが横いっぱいになったら折り返すよ
+css:
+  .card-container{
+    display : flex;
+    flex-wrap : wrap;
+  }
+  .card-body{
+    height : 90px;
+  }
+
+/jsでdbのデータをcardに反映するよ
+/コントローラーの変数をjsonにしてnamesに入れる(footerにはTwitter_urlがnullなのでidを入れてる)
+javascript:
+  var names = #{raw @eventers.to_json};
+    $(function(){
+      $(".card-header").each(function(i){
+        $(this).html(names[i].name);
+      });
+      $(".card-body").each(function(i){
+        $(this).html(names[i].profile);
+      });
+      $(".card-footer").each(function(i){
+        $(this).html(names[i].id);
+      });
+    });
