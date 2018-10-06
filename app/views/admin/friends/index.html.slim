@@ -1,0 +1,22 @@
+.my-3.my-md-5
+  .container
+    .page-header
+      h1.page-title
+        | Artists
+    .card-container
+      - @friends&.each do |friend|
+        .col-md-4.col-xl-3
+          .card
+            .card-status.bg-yellow
+            .card-header
+              =
+              h3.card-title.avatar-side-content
+                =
+              .card-options
+                =
+            .card-body
+              =
+            .card-footer
+    .col-sm-12
+      .pagination-position
+        = paginate @friends
