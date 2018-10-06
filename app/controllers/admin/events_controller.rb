@@ -1,9 +1,11 @@
 class Admin::EventsController < Admin::ApplicationController
   def index
-    @events = Event.order(created_at: :desc).page(params[:page])
+    @q = Event.ransack(params[:q])
+    @events = @q.result(distinct: true).order(created_at: :desc).page(params[:page])
+    pagination_count(Event)
   end
 
   def show
-    @event = Event.find(params[:id])
+    @events = Event.find(params[:id])
   end
 end
