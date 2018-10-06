@@ -20,7 +20,7 @@ class Artist < ApplicationRecord
 
   # mount_uploader :artist_image, ArtistImageUploader #carrierwave設定の時にまとめてやる
   validates :name, presence: true
-  validates :web_url, format: {with: /\A#{URI.regexp(%w(http https))}\z/}, allow_blank: true
+  validates :web_url, format: { with: /\A#{URI.regexp(%w(http https))}\z/ }, allow_blank: true
   validates :genre, presence: true
 
   has_many :offers

@@ -1,12 +1,11 @@
+# rubocop:disable all
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root 'client/dashboard#index'
   get 'login', to: 'client/sessions#new'
   post 'login', to: 'client/sessions#create'
   get 'logout', to: 'client/sessions#destroy'
 
-  #client側route(pathにclientは含めないこと)
+  # client側route(pathにclientは含めないこと)
   resources :events, controller: 'client/events'
   resources :artists, controller: 'client/artists'
   resources :friends, controller: 'client/friends'
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
   resources :offers, controller: 'client/offers'
   resource :eventer, controller: 'client/eventer'
 
-  #admin側route
+  # admin側route
   namespace :admin do
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'

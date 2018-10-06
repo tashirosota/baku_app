@@ -11,7 +11,7 @@
 #  door       :integer
 #  concept    :text
 #  images     :string
-#  status     :string
+#  aasm_state :string
 #  eventer_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

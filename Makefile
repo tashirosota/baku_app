@@ -28,6 +28,8 @@ test:
 	docker-compose run --rm web bundle exec rubocop --auto-correct
 	docker-compose run --rm web bundle exec rspec --profile
 
+rubocop:
+	docker-compose run --rm web bundle exec rubocop --auto-correct
 
 spec:
 	docker-compose run --rm web bundle exec rspec

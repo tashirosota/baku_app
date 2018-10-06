@@ -39,12 +39,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'aasm'
 gem 'carrierwave'
 gem 'enumerize'
+gem 'faker'
 gem 'foreman'
 gem 'kaminari'
 gem 'slim-rails'
-gem 'faker'
 gem 'webpacker', github: 'rails/webpacker'
-#herokuでのログ出力
+# herokuでのログ出力
 gem 'rails_12factor', group: :production
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
