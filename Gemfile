@@ -44,6 +44,7 @@ gem 'foreman'
 gem 'ransack'
 gem 'kaminari'
 gem 'slim-rails'
+gem 'banken'
 gem 'webpacker', github: 'rails/webpacker'
 # herokuでのログ出力
 gem 'rails_12factor', group: :production

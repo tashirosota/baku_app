@@ -1,4 +1,5 @@
 class Admin::AdministratorsController < Admin::ApplicationController
+  before_action :authorize!
   protect_from_forgery with: :null_session
 
   def index
@@ -17,7 +18,9 @@ class Admin::AdministratorsController < Admin::ApplicationController
     redirect_to admin_administrators_path, notice: 'Administrator created successfully.'
   end
 
-  def edit; end
+  def edit
+    target_administrator
+  end
 
   def update
     return render :edit unless target_administrator.update(admin_params)

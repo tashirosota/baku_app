@@ -1,0 +1,23 @@
+= form_with(model: [:admin, @administrator], local: true) do |form|
+  - if @administrator.errors.any?
+    #error_explanation
+    .alert.alert-warning[role="alert"]
+      - @administrator.errors.full_messages.each do |message|
+        li.mb-0
+          = message
+  .field
+    .form-group
+      label 名前
+      = form.text_field :name, id: :admin_name, class: "form-control"
+    .form-group
+      label Password
+      = form.password_field :password, id: :admin_password, class: "form-control"
+    .form-group
+      label Password confirmation
+      = form.password_field :password_confirmation, id: :admin_password_confirmation, class: "form-control"
+    .form-group
+      label 権限
+      br
+      = form.select :role, {"管理者" => 'admin', "閲覧者" => 'operator'}, id: :amdin_role, class: "form-control"
+  .actions
+    = form.submit class: "btn btn-outline-success"

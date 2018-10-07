@@ -1,9 +1,12 @@
 class Admin::ApplicationController < ApplicationController
   include AjaxHelper
-
+  include Banken
   protect_from_forgery except: :create
   before_action :require_login, :current_user
   layout 'admin'
+
+  rescue_from Banken::NotAuthorizedError, with: :user_not_authorized
+
 
   private
 
@@ -23,5 +26,12 @@ class Admin::ApplicationController < ApplicationController
     if @current_page == 0 then @current_page += 1 end
     @current_start = Kaminari.config.default_per_page * (@current_page - 1 ) + 1
     @current_end   = @current_start + Kaminari.config.default_per_page - 1
+  end
+
+  def user_not_authorized(exception)
+    loyalty_name = exception.loyalty.class.to_s.underscore
+
+    flash[:error] = t "#{loyalty_name}.#{exception.query}", scope: 'banken', default: :default
+    render 'not_authorized'
   end
 end

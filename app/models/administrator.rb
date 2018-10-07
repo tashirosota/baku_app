@@ -20,8 +20,8 @@ class Administrator < ApplicationRecord
 
   # 権限毎に操作を変える時に使う
   LEVEL = {
-    root: 3,
-    admin: 2,
-    operator: 1
+    'root' => 3,
+    'admin' => 2,
+    'operator' => 1
   }.freeze
 end
