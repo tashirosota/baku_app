@@ -66,14 +66,6 @@ ActiveRecord::Schema.define(version: 2018_09_24_061855) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "friends", force: :cascade do |t|
-    t.integer "from_user_id", null: false
-    t.integer "to_user_id", null: false
-    t.string "aasm_state", comment: "状態 %(申請中 却下 友達 解除)"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "offers", force: :cascade do |t|
     t.string "condition", comment: "出演条件"
     t.string "aasm_state", comment: "状態%(候補 オファー中 拒否 決定 キャンセル)"

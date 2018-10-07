@@ -21,10 +21,6 @@ Administrator.create(name: '運営アカウント', role: 'operator', password: 
   end
 end
 
-Eventer.all.each do |i|
-  3.times {Friend.create!(to_user: i, from_user: Eventer.all.sample)}
-end
-
 Event.all.each do |i|
   i.collaborators.create(eventer: Eventer.all.sample)
 end

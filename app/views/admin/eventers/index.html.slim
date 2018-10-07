@@ -28,7 +28,9 @@
               br
               = "アーティスト数: #{eventer.artists.count}"
               br
-              = "イベント数: #{eventer.events.count + eventer.collaborators.count}"
+              = "主催数: #{eventer.events.count}"
+              br
+              = "コラボ数: #{eventer.collaborators.count}"
 
             .card-footer
               = "created_at: #{eventer.created_at.strftime('%Y/%m/%d')}"
