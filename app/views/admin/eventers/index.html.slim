@@ -17,11 +17,11 @@
               h3.card-title.avatar-side-content
                 = link_to eventer.name, admin_eventer_path(eventer)
               .card-options
-                a.card-options-collapse data-toggle="card-collapse" href="#"
-                  i.fe.fe-chevron-up
                 - if eventer.twitter_url
                   a href="#{eventer.twitter_url}"
                     i.fa.fa-twitter
+                a.card-options-collapse data-toggle="card-collapse" href="#"
+                  i.fe.fe-chevron-up
             .card-body
               = eventer.profile
               br

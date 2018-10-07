@@ -1,5 +1,79 @@
 .my-3.my-md-5
   .container
-    .page-header
-      h1.page-title
-        | Event
+    .row
+      .col-lg-3
+        .card.card-profile
+          .card-header.bg-green
+          .card-body.text-center
+            = image_tag @event.images.url, class: 'card-profile-img'
+            h3.mb-3
+              = @event.title
+            p.mb-4
+              = @event&.concept
+
+            .text-left
+
+              = "場所: #{@event.house.present? ? @event.house : '未設定'} "
+              br
+              = "日程: #{@event.date.present? ? @event.date.strftime('%y/%m/%d') : '未設定'}"
+              br
+              = "op/st : #{@event.open.present? ? @event.open : "tba"}/#{@event.start.present? ? event.start : "tba"}"
+              br
+              = "adv/door : #{@event.adv.present? ? @event.adv : "tba"}/#{@event.door.present? ? event.door : "tba"}"
+              br
+              |[決定act]
+              br
+              = "　未実装"
+          .card-footer
+            = "created_at #{@event.created_at.strftime('%Y/%m/%d')} <br>by #{link_to @event.eventer.name, admin_eventer_path}".html_safe
+
+        - @collaborators&.each do |eventer|
+          .page-header
+            .page-title コラボレータ一覧
+          .card.card-collapsed
+            .card-status.bg-red
+            .card-header
+              = image_tag(eventer.avatar.url , class: 'avatar')
+              h3.card-title.avatar-side-content
+                = link_to eventer.name, admin_eventer_path(eventer)
+              .card-options
+                - collabo = Collaborator.find_by(event: @event,eventer: eventer)
+                = collabo.role
+                a.card-options-collapse data-toggle="card-collapse" href="#"
+                  i.fe.fe-chevron-up
+            .card-body
+              = eventer.profile
+              br
+              |[オファー一覧]
+              br
+              | オファー一覧のバンドをeachで状態とともに表示する
+
+            .card-footer
+              = "created_at: #{collabo.created_at.strftime('%Y/%m/%d')}"
+
+      .col-lg-9
+        .page-header
+          .page-title オファ一覧
+        .card-container
+          - @offer_artists&.each do |artist|
+            .col-md-4
+              .card.card-collapsed
+                .card-status.bg-blue
+                .card-header
+                  = image_tag(artist.artist_image.url , class: 'avatar')
+                  h3.card-title.avatar-side-content
+                    = link_to artist.name, admin_artist_path
+                  .card-options
+                    - my_offer = Offer.find_by(artist: artist, event: @event)
+                    = my_offer.aasm_state
+                    a.card-options-collapse data-toggle="card-collapse" href="#"
+                      i.fe.fe-chevron-up
+
+                .card-body
+                  = "直近のライブ: 直近のライブを持ってくる実装"
+                  br
+                  = "オファー数: 計#{artist.offers.count || 0}回"
+                  br
+                  = "決定数: 計#{artist.ok_count.count || 0}回"
+                .card-footer
+                  = "created_at #{my_offer.created_at.strftime('%Y/%m/%d')}"

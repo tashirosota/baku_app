@@ -6,6 +6,9 @@ class Admin::EventsController < Admin::ApplicationController
   end
 
   def show
-    @events = Event.find(params[:id])
+    @event = Event.find(params[:id])
+    # ハッシュで状態ごとに取得する
+    @offer_artists = @event.offers&.map{|o| o.artist}
+    @collaborators = @event.collaborators&.map{|c| c.eventer}
   end
 end

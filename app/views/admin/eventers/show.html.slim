@@ -1,7 +1,7 @@
 .my-3.my-md-5
   .container
     .row
-      .col-lg-4
+      .col-lg-3
         .card.card-profile
           .card-header style='background-color: #dc3545'
           .card-body.text-center
@@ -26,7 +26,7 @@
           .card-footer
             = "created_at: #{@eventer.created_at.strftime('%Y/%m/%d')} <br> updated_at#{@eventer.updated_at.strftime('%Y/%m/%d')}".html_safe
 
-      .col-lg-8
+      .col-lg-9
         .page-header
           .page-title 共催イベント一覧
         .card-container
@@ -39,9 +39,9 @@
                   h3.card-title.avatar-side-content
                     = event.title
                   .card-options
+                    = event.aasm_state
                     a.card-options-collapse data-toggle="card-collapse" href="#"
                       i.fe.fe-chevron-up
-                    = event.aasm_state
                 .card-body
                   = "場所: #{event.house.present? ? event.house : '未設定'} "
                   br

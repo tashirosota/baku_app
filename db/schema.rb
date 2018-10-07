@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2018_09_24_061855) do
   create_table "collaborators", force: :cascade do |t|
     t.integer "eventer_id", comment: "共済者id"
     t.integer "event_id", comment: "イベントid"
+    t.string "role", comment: "権限"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
