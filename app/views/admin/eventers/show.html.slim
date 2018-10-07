@@ -1,5 +1,111 @@
 .my-3.my-md-5
   .container
-    .page-header
-      h1.page-title
-        | Eventer
+    .row
+      .col-lg-4
+        .card.card-profile
+          .card-header style='background-color: #dc3545'
+          .card-body.text-center
+            = image_tag @eventer.avatar.url, class: 'card-profile-img'
+            h3.mb-3
+              = @eventer.name
+            p.mb-4
+              = @eventer.profile
+            - if @eventer.twitter_url
+              a.btn.btn-outline-primary.btn-sm href="#{@eventer.twitter_url}"
+                span.fa.fa-twitter Follow
+            .text-left
+              br
+              = link_to "アーティスト一覧: ", admin_artists_path
+              = "合計数 #{@eventer.artists.count}"
+              br
+              = link_to "イベント一覧: ", admin_events_path
+              = "合計数#{@eventer.events.count + @eventer.collaborators.count} 全体(fix済み)未実装"
+              br
+              = "オファー待ち数: 未実装"
+
+          .card-footer
+            = "created_at: #{@eventer.created_at.strftime('%Y/%m/%d')} <br> updated_at#{@eventer.updated_at.strftime('%Y/%m/%d')}".html_safe
+
+        .page-header
+          .page-title Collaboration events
+
+        .card-container
+          - @collabo_events&.each do |event|
+            .card.card-collapsed
+              .card-status.bg-green
+              .card-header
+                = image_tag(event.images.url , class: 'avatar')
+                h3.card-title.avatar-side-content
+                  = event.title
+                .card-options
+                  a.card-options-collapse data-toggle="card-collapse" href="#"
+                    i.fe.fe-chevron-up
+                  = event.aasm_state
+              .card-body
+                = "場所: #{event.house.present? ? event.house : '未設定'} "
+                br
+                = "日程: #{event.date.present? ? event.date.strftime('%y/%m/%d') : '未設定'}"
+                br
+                = "op/st : #{event.open.present? ? event.open : "tba"}/#{event.start.present? ? event.start : "tba"}"
+                br
+                = "adv/door : #{event.adv.present? ? event.adv : "tba"}/#{event.door.present? ? event.door : "tba"}"
+                br
+                br
+                = "自分のオファーバンド一覧と状態が確認できるようにする"
+              .card-footer
+                = "created_at #{event.created_at.strftime('%Y/%m/%d')} <br>by #{event.eventer.name}".html_safe
+      .col-lg-8
+        .page-header
+          .page-title 友達一覧
+        .card-container
+          - @follows&.each do |follow|
+            .col-md-6
+              .card.card-collapsed
+                .card-status
+                .card-header
+                  = image_tag(follow.avatar.url , class: 'avatar')
+                  h3.card-title.avatar-side-content
+                    = link_to follow.name, admin_eventer_path(follow)
+                  .card-options
+                    a.card-options-collapse data-toggle="card-collapse" href="#"
+                      i.fe.fe-chevron-up
+                    - if follow.twitter_url
+                      a href="#{follow.twitter_url}"
+                        i.fa.fa-twitter
+                .card-body
+                  = follow.profile
+                  br
+                  br
+                  = "アーティスト数: #{follow.artists.count}"
+                  br
+                  = "イベント数: #{follow.events.count + follow.collaborators.count}"
+
+                .card-footer
+                  = "created_at: #{follow.created_at.strftime('%Y/%m/%d')} by #{@eventer.name}"
+
+        .page-header
+          .card-container
+            - @followers&.each do |follower|
+              .col-md-6
+                .card.card-collapsed
+                  .card-status
+                  .card-header
+                    = image_tag(follower.avatar.url , class: 'avatar')
+                    h3.card-title.avatar-side-content
+                      = link_to follower.name, admin_eventer_path(follower)
+                    .card-options
+                      a.card-options-collapse data-toggle="card-collapse" href="#"
+                        i.fe.fe-chevron-up
+                      - if follower.twitter_url
+                        a href="#{follower.twitter_url}"
+                          i.fa.fa-twitter
+                  .card-body
+                    = follower.profile
+                    br
+                    br
+                    = "アーティスト数: #{follower.artists.count}"
+                    br
+                    = "イベント数: #{follower.events.count + follower.collaborators.count}"
+
+                  .card-footer
+                    = "created_at: #{follower.created_at.strftime('%Y/%m/%d')} by #{follower.name}"
