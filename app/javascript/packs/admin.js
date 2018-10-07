@@ -10,9 +10,6 @@ import 'moment/locale/ja'
 import Rails from 'rails-ujs'
 Rails.start();
 
-
-Rails.start();
-
 // scss , css
 import '../../../self_node_modules/bootstrap/scss/bootstrap.scss'
 import 'font-awesome/scss/font-awesome.scss'
@@ -37,7 +34,6 @@ let hexToRgba = function(hex, opacity) {
  *
  */
 $(document).ready(function() {
-
     //現在のnavbarをactiveにする処理
     $(function(){
         $('#headerMenuCollapse li a').each(function(){
