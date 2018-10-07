@@ -2,7 +2,7 @@ class Admin::ApplicationController < ApplicationController
   include AjaxHelper
   include Banken
   protect_from_forgery except: :create
-  before_action :require_login, :current_user
+  before_action :require_login, :current_user, :set_news
   layout 'admin'
 
   rescue_from Banken::NotAuthorizedError, with: :user_not_authorized
@@ -33,5 +33,16 @@ class Admin::ApplicationController < ApplicationController
 
     flash[:error] = t "#{loyalty_name}.#{exception.query}", scope: 'banken', default: :default
     render 'not_authorized'
+  end
+
+  def set_news
+    @new_records = {}
+    @new_records[:eventers] = Eventer.get_new_records
+    @new_records[:events] = Event.get_new_records
+    @new_records[:artists] = Artist.get_new_records
+    def @new_records.has_record?
+      !!(self[:eventers]&.count + self[:events]&.count + self[:artists]&.count)
+    end
+    @new_records
   end
 end

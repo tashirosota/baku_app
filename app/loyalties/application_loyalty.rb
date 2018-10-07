@@ -36,8 +36,6 @@ class  ApplicationLoyalty
 
   private
   def over_admin_level?
-    pp "よばれた"
-    pp @user
     Administrator::LEVEL[@user.role] > 1
   end
 end

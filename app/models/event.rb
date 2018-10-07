@@ -27,4 +27,5 @@ class Event < ApplicationRecord
   has_many :offers
   belongs_to :eventer
   has_many :collaborators
+
 end

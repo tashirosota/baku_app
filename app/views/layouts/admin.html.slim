@@ -34,28 +34,36 @@ html
                   .dropdown.d-none.d-md-flex
                     a.nav-link.icon data-toggle="dropdown"
                       i.fe.fe-bell
-                      span.nav-unread
+                      - if pp @new_records.has_record?
+                        span.nav-unread
                     .dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
-                      a.dropdown-item.d-flex href="#"
-                        span.avatar.mr-3.align-self-center style=("background-image: url(/dummy_avatar.png)")
-                        div
-                          strong Nathan
-                          | pushed new commit: Fix page load performance issue.
-                          .small.text-muted 10 minutes ago
-                      a.dropdown-item.d-flex href="#"
-                        span.avatar.mr-3.align-self-center style=("background-image: url(/dummy_avatar.png)")
-                        div
-                          strong Alice
-                          | started new task: Tabler UI design.
-                          .small.text-muted 1 hour ago
-                      a.dropdown-item.d-flex href="#"
-                        span.avatar.mr-3.align-self-center style=("background-image: url(/dummy_avatar.png)")
-                        div
-                          strong Rose
-                          | deployed new version of NodeJS REST Api V3
-                          .small.text-muted 2 hours ago
-                      .dropdown-divider
-                      a.dropdown-item.text-center href="#"  Mark all as read
+                      - Array(@new_records[:events]).each do |new_event|
+                        / 本来ならadmin_events_pathなきがする
+                        a.dropdown-item.d-flex style="background-color: #f9fff2" href="#{admin_path(new_event)}"
+                          span.avatar.mr-3.align-self-center style=("background-image: url(#{new_event.images.url})")
+                          div
+                            strong
+                              = "#{new_event.title}: #{new_event.concept}"
+                            .small.text-muted
+                              = new_event.created_at
+                      - Array(@new_records[:eventers]).each do |new_eventer|
+                        a.dropdown-item.d-flex style="background-color: #fff2f4" href="#{admin_eventers_path(new_eventer)}"
+                          span.avatar.mr-3.align-self-center style=("background-image: url(#{new_eventer.avatar.url})")
+                          div
+                            strong
+                              = "#{new_eventer.name}: #{new_eventer.profile}"
+                            .small.text-muted
+                              = new_eventer.created_at
+                      - Array(@new_records[:artists]).each do |new_artist|
+                        a.dropdown-item.d-flex style="background-color: #f2fcff" href="#{admin_artists_path(new_artist)}"
+                          span.avatar.mr-3.align-self-center style=("background-image: url(#{new_artist.artist_image.url})")
+                          div
+                            strong
+                              = "#{new_artist.name}: #{new_artist.web_url}"
+                            .small.text-muted
+                              = new_artist.created_at
+                      / .dropdown-divider
+                      / a.dropdown-item.text-center href="#"  Mark all as read
                   .dropdown
                     a.nav-link.pr-0.leading-none data-toggle="dropdown" href="#"
                       span.avatar style=("background-image: url(/dummy_avatar.png)")
@@ -105,27 +113,9 @@ html
                       a.nav-link href="/admin/collaborators"
                         i.fa.fa-handshake-o
                         | コラボレーター
-                    / 権限によっては出さない処理を書く
-                    li.nav-item
-                      a.nav-link href="./administrators"
-                        i.fa.fa-user-secret
-                        | 管理者管理
-                    / li.nav-item.dropdown
-                    /   a.nav-link data-toggle="dropdown" href="javascript:void(0)"
-                    /     i.fe.fe-file
-                    /     | Pages
-                    /   .dropdown-menu.dropdown-menu-arrow
-                    /     a.dropdown-item href="./profile.html"  Profile
-                    /     a.dropdown-item href="./login.html"  Login
-                    /     a.dropdown-item href="./register.html"  Register
-                    /     a.dropdown-item href="./forgot-password.html"  Forgot password
-                    /     a.dropdown-item href="./400.html"  400 error
-                    /     a.dropdown-item href="./401.html"  401 error
-                    /     a.dropdown-item href="./403.html"  403 error
-                    /     a.dropdown-item href="./404.html"  404 error
-                    /     a.dropdown-item href="./500.html"  500 error
-                    /     a.dropdown-item href="./503.html"  503 error
-                    /     a.dropdown-item href="./email.html"  Email
-                    /     a.dropdown-item href="./empty.html"  Empty page
-                    /     a.dropdown-item href="./rtl.html"  RTL mode
+                    - if Administrator::LEVEL[@current_user.role] > 1
+                      li.nav-item
+                        a.nav-link href="./administrators"
+                          i.fa.fa-user-secret
+                          | 管理者管理
           = yield
