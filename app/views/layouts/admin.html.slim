@@ -115,7 +115,7 @@ html
                         | コラボレーター
                     - if Administrator::LEVEL[@current_user.role] > 1
                       li.nav-item
-                        a.nav-link href="./administrators"
+                        a.nav-link href="/admin/administrators"
                           i.fa.fa-user-secret
                           | 管理者管理
           = yield

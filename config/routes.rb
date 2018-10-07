@@ -41,6 +41,6 @@ Rails.application.routes.draw do
     resources :administrators
 
     get 'password', to: 'password#edit'
-    post 'password', to: 'password#update'
+    patch 'password', to: 'password#update'
   end
 end

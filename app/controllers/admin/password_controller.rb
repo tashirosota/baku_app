@@ -3,9 +3,9 @@ class Admin::PasswordController < Admin::ApplicationController
 
   def update
     if current_password?
-      return redirect_to admin_root_path, notice: 'パスワード変更に成功しました.' if @administrator.update(admin_params)
+      return redirect_to admin_root_path if @current_user.update(admin_params)
     end
-    render :edit, notice: 'パスワード変更に失敗しました.'
+    render :edit
   end
 
   private

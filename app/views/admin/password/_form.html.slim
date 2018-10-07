@@ -1,0 +1,18 @@
+= form_with(model: [:admin, @current_user],url: admin_password_path, local: true) do |form|
+  - if @current_user.errors.any?
+    #error_explanation
+    .alert.alert-warning[role="alert"]
+      - @current_user.errors.full_messages.each do |message|
+        li.mb-0
+          = message
+  .field
+    label Current password
+    = password_field_tag :current_password, nil, placeholder: 'Enter current password', class: 'form-control'
+    .form-group
+      label Password
+      = form.password_field :password, id: :admin_password, placeholder: 'Enter new password', class: "form-control"
+    .form-group
+      label Password confirmation
+      = form.password_field :password_confirmation, id: :admin_password_confirmation, placeholder: 'Reenter new password', class: "form-control"
+  .actions
+    = form.submit class: "btn btn-outline-success"
