@@ -8,6 +8,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.integer :adv , comment: '前売り料金'
       t.integer :door , comment: '当日料金'
       t.text :concept , comment: 'コンセプト(概要に組み込む)'
+      t.string :house , comment: 'ライブハウス'
       t.string :images , comment: 'フライヤーやタイムテーブルを配列で格納'
       t.string :aasm_state, comment: '状態 %(完了 オファー中 構想)'
       t.integer :eventer_id, comment: '主催者id'

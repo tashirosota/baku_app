@@ -39,7 +39,7 @@ html
                     .dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
                       - Array(@new_records[:events]).each do |new_event|
                         / 本来ならadmin_events_pathなきがする
-                        a.dropdown-item.d-flex style="background-color: #f9fff2" href="#{admin_path(new_event)}"
+                        a.dropdown-item.d-flex style="background-color: #f9fff2" href="#{admin_event_path(new_event)}"
                           span.avatar.mr-3.align-self-center style=("background-image: url(#{new_event.images.url})")
                           div
                             strong
@@ -47,7 +47,7 @@ html
                             .small.text-muted
                               = new_event.created_at
                       - Array(@new_records[:eventers]).each do |new_eventer|
-                        a.dropdown-item.d-flex style="background-color: #fff2f4" href="#{admin_eventers_path(new_eventer)}"
+                        a.dropdown-item.d-flex style="background-color: #fff2f4" href="#{admin_eventer_path(new_eventer)}"
                           span.avatar.mr-3.align-self-center style=("background-image: url(#{new_eventer.avatar.url})")
                           div
                             strong
@@ -55,7 +55,7 @@ html
                             .small.text-muted
                               = new_eventer.created_at
                       - Array(@new_records[:artists]).each do |new_artist|
-                        a.dropdown-item.d-flex style="background-color: #f2fcff" href="#{admin_artists_path(new_artist)}"
+                        a.dropdown-item.d-flex style="background-color: #f2fcff" href="#{admin_artist_path(new_artist)}"
                           span.avatar.mr-3.align-self-center style=("background-image: url(#{new_artist.artist_image.url})")
                           div
                             strong
@@ -101,18 +101,6 @@ html
                       a.nav-link href="/admin/artists"
                         i.fa.fa-microphone
                         | アーティスト
-                    li.nav-item
-                      a.nav-link href="/admin/offers"
-                        i.fa.fa-paper-plane-o
-                        | オファー
-                    li.nav-item
-                      a.nav-link href="/admin/friends"
-                        i.fe.fe-users
-                        | フレンド
-                    li.nav-item
-                      a.nav-link href="/admin/collaborators"
-                        i.fa.fa-handshake-o
-                        | コラボレーター
                     - if Administrator::LEVEL[@current_user.role] > 1
                       li.nav-item
                         a.nav-link href="/admin/administrators"

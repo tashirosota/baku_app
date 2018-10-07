@@ -20,6 +20,8 @@
                 = link_to content_tag(:i, '', class: 'fe fe-edit'), edit_admin_administrator_path(admin), style: 'margin-right: 10px; color: #000000;'
                 = link_to content_tag(:i, '', class: 'fa fa-trash'), admin_administrator_path(admin), method: :delete, style: 'margin-right: 10px; color: #000000;', data: {confirm: '削除してもよろしいですか?'}
                 = admin.role
+                a.card-options-collapse data-toggle="card-collapse" href="#"
+                  i.fe.fe-chevron-up
             .card-footer
               = "作成: #{admin.created_at.strftime('%y/%m/%d')} / 更新: #{admin.updated_at.strftime('%y/%m/%d')}"
     .col-sm-12

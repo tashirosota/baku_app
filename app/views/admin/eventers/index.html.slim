@@ -13,16 +13,25 @@
           .card
             .card-status.bg-red
             .card-header
-              h3.card-title
-                = eventer.name
+              = image_tag(eventer.avatar.url , class: 'avatar')
+              h3.card-title.avatar-side-content
+                = link_to eventer.name, admin_eventer_path(eventer)
               .card-options
-                a href="#"
-                  = eventer.twitter_url
+                a.card-options-collapse data-toggle="card-collapse" href="#"
+                  i.fe.fe-chevron-up
+                - if eventer.twitter_url
+                  a href="#{eventer.twitter_url}"
+                    i.fa.fa-twitter
             .card-body
               = eventer.profile
+              br
+              br
+              = "アーティスト数: #{eventer.artists.count}"
+              br
+              = "イベント数: #{eventer.events.count + eventer.collaborators.count}"
 
             .card-footer
-              = "twitter : #{eventer.twitter_url}"
+              = "created_at: #{eventer.created_at.strftime('%Y/%m/%d')}"
     .col-sm-12
       = "合計#{@total_records}件 現在 #{@current_page}頁目で#{@current_start}件目~#{@current_end}件目まで表示中"
       .pagination-position

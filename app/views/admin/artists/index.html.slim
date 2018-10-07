@@ -18,12 +18,14 @@
                 = artist.name
               .card-options
                 = artist.genre
+                a.card-options-collapse data-toggle="card-collapse" href="#"
+                  i.fe.fe-chevron-up
             .card-body
-              = "直近のライブ: ライブタイトル"
+              = "直近のライブ: 直近のライブを持ってくる実装"
               br
-              = "オファー数: 計#{}回"
+              = "オファー数: 計#{artist.offers.count || 0}回"
               br
-              = "決定数: 計#{}回"
+              = "決定数: 計#{artist.ok_count.count || 0}回"
               br
               |MVs:
               - if artist.mv_urls.present?

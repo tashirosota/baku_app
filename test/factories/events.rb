@@ -10,6 +10,7 @@
 #  adv        :integer
 #  door       :integer
 #  concept    :text
+#  house      :string
 #  images     :string
 #  aasm_state :string
 #  eventer_id :integer

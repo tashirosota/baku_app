@@ -23,20 +23,20 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'dashboard#index'
 
     get 'events', to: 'events#index'
-    get 'events/:id', to: 'events#show'
+    get 'events/:id', to: 'events#show', as: 'event'
 
     get 'eventers', to: 'eventers#index'
-    get 'eventers/:id', to: 'eventers#show'
+    get 'eventers/:id', to: 'eventers#show', as: 'eventer'
 
     get 'offers', to: 'offers#index'
 
     get 'friends', to: 'friends#index'
 
     get 'artists', to: 'artists#index'
-    get 'artists/:id', to: 'artists#show'
+    get 'artists/:id', to: 'artists#show', as: 'artist'
 
     get 'collaborators', to: 'collaborators#index'
-    get 'collaborators/:id', to: 'collaborators#show'
+    get 'collaborators/:id', to: 'collaborators#show', as: 'collaborator'
 
     resources :administrators
 

@@ -2,7 +2,7 @@ module AasmEvent
   extend ActiveSupport::Concern
   included do
     include AASM
-    prepended AasmHistory
+    include AasmHistory
     aasm do
       state :plan, initial: true # 構想段階
       state :before_offered # オファー前

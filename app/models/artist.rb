@@ -29,4 +29,8 @@ class Artist < ApplicationRecord
   def valid_mv_urls
     return true unless mv_urls
   end
+
+  def ok_count
+    offers.where(aasm_state: :ok)
+  end
 end

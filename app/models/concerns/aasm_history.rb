@@ -5,6 +5,7 @@ module AasmHistory
   end
 
   # rubocop:disable Metrics/ParameterLists, Lint/UnderscorePrefixedVariableName
+
   def aasm_fired(_state_machine_name, _event, old_state, new_state_name, _options, *args)
     # stateを保存する場合は履歴も作成する
     # stateの保存に失敗した場合は履歴もロールバックされる

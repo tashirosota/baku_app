@@ -13,25 +13,28 @@
           .card
             .card-status.bg-green
             .card-header
-              h3.card-title
-                = event.title.present? ? event.title : "-タイトル未定-"
+              = image_tag(event.images.url , class: 'avatar')
+              h3.card-title.avatar-side-content
+                = link_to event.title, admin_event_path(event)
               .card-options
-                = event.date
+                = event.aasm_state
+                a.card-options-collapse data-toggle="card-collapse" href="#"
+                  i.fe.fe-chevron-up
+
             .card-body
-              = "イベント名"
+              = "場所: #{event.house.present? ? event.house : '未設定'} "
               br
-              |op/st :
-              = event.open.present? ? event.open : "未定/"
-              = event.start.present? ? event.start : "未定"
+              = "日程: #{event.date.present? ? event.date.strftime('%y/%m/%d') : '未設定'}"
               br
-              |adv/door
-              = event.adv.present? ? event.adv : "未定/"
-              = event.door.present? ? event.door : "未定"
+              = "op/st : #{event.open.present? ? event.open : "tba"}/#{event.start.present? ? event.start : "tba"}"
               br
-              = event.concept.present? ? event.concept : "コンセプト"
+              = "adv/door : #{event.adv.present? ? event.adv : "tba"}/#{event.door.present? ? event.door : "tba"}"
               br
+              - event.concept.present?
+                = "[コンセプト]<br>#{event.concept}"
+                br
             .card-footer
-              = "主催 : #{event.eventer.name}"
+              = "created_at #{event.created_at.strftime('%Y/%m/%d')} <br>by #{event.eventer.name}".html_safe
     .col-sm-12
       = "合計#{@total_records}件 現在 #{@current_page}頁目で#{@current_start}件目~#{@current_end}件目まで表示中"
       .pagination-position

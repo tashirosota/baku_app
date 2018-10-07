@@ -9,13 +9,13 @@ require 'faker'
 
 Administrator.create(name: 'root', role: 'root', password: 'password', password_confirmation: 'password')
 Administrator.create(name: 'tashiro', role: 'admin', password: 'password', password_confirmation: 'password')
-Administrator.create(name: '運営アカウント', role: 'viewer', password: 'password', password_confirmation: 'password')
+Administrator.create(name: '運営アカウント', role: 'operator', password: 'password', password_confirmation: 'password')
 
 
 10.times do |i|
   eventer = Eventer.create!(name: "テストユーザ-#{i}", profile: 'テストアカウントです')
   10.times {eventer.artists.create!(name: Faker::Artist.name, genre: Faker::Music.genre)}
-  10.times {eventer.events.create!(title: Faker::Artist.name)}
+  10.times {eventer.events.create!(title: Faker::Artist.name, house: Faker::Pokemon.location)}
   eventer.events.each do |event|
     3.times {event.offers.create!(artist: eventer.artists.sample)}
   end

@@ -12,7 +12,7 @@ module BakuApp
     config.load_defaults 5.2
     config.generators.template_engine = :slim
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
-    config.i18n.default_locale = :ja
+    config.i18n.default_locale = :en
 
 
     # Settings in config/environments/* take precedence over those specified here.
