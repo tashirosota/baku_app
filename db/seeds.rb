@@ -43,5 +43,6 @@ end
 
 Event.all.each do |i|
   c_e = i.collaborators.create(eventer: Eventer.all.sample)
-  c_e_a = i.offers.create(artist: c_e.artists.sample,eventer: c_e)
+
+  c_e_a = i.offers.create(artist: c_e.eventer.artists.sample, event: i)
 end
