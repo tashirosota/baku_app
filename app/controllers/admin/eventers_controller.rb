@@ -7,6 +7,6 @@ class Admin::EventersController < Admin::ApplicationController
 
   def show
     @eventer = Eventer.find(params[:id])
-    @collabo_events = @eventer.collaborators.map{|c| c.event}
+    @collabo_events = @eventer.collaborators.map(&:event)
   end
 end

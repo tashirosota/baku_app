@@ -17,9 +17,11 @@
               br
               = "オファー総数: #{@artist.offers.count}"
               br
-              = "出演数: #{@artist.offers.where(aasm_state: :ok).count}"
+              = "出演数: #{@artist.ok_events&.count}"
               br
-              = "NG数: #{@artist.offers.where(aasm_state: :ng).count}"
+              = "検討中: #{@artist.offering_events&.count}"
+              br
+              = "NG数: #{@artist.ng_events&.count}"
               br
 
 
@@ -28,9 +30,9 @@
 
       .col-lg-9
         .page-header
-          .page-title オファーイベント一覧
+          .page-title 出演イベント一覧
         .card-container
-          - @events&.each do |event|
+          - @events[:ok]&.each do |event|
             .col-md-4
               .card.card-collapsed
                 .card-status.bg-green
@@ -51,6 +53,86 @@
                   br
                   = "adv/door : #{event.adv.present? ? event.adv : "tba"}/#{event.door.present? ? event.door : "tba"}"
                   br
+                  |[決定act]
+                  br
+                  - if event.ok_artists.present?
+                    - event.ok_artists&.each do |artist|
+                      = "- #{link_to artist.name, admin_artist_path(artist)}".html_safe
+                      br
+                  - else
+                    = "なし"
+
+                .card-footer
+                  = "created__at #{event.created_at.strftime('%Y/%m/%d')} <br> by #{link_to event.eventer.name, admin_eventer_path(event.eventer)}".html_safe
+
+        .page-header
+          .page-title 検討中一覧
+        .card-container
+          - @events[:offering]&.each do |event|
+            .col-md-4
+              .card.card-collapsed
+                .card-status.bg-green
+                .card-header
+                  = image_tag(event.images.url , class: 'avatar')
+                  h3.card-title.avatar-side-content
+                    = link_to event.title, admin_event_path(event)
+                  .card-options
+                    = event.my_offer(@artist).aasm_state
+                    a.card-options-collapse data-toggle="card-collapse" href="#"
+                      i.fe.fe-chevron-up
+                .card-body
+                  = "場所: #{event.house.present? ? event.house : '未設定'} "
+                  br
+                  = "日程: #{event.date.present? ? event.date.strftime('%y/%m/%d') : '未設定'}"
+                  br
+                  = "op/st : #{event.open.present? ? event.open : "tba"}/#{event.start.present? ? event.start : "tba"}"
+                  br
+                  = "adv/door : #{event.adv.present? ? event.adv : "tba"}/#{event.door.present? ? event.door : "tba"}"
+                  br
+                  |[決定act]
+                  br
+                  - if event.ok_artists.present?
+                    - event.ok_artists&.each do |artist|
+                      = "- #{link_to artist.name, admin_artist_path(artist)}".html_safe
+                      br
+                  - else
+                    = "なし"
+
+                .card-footer
+                  = "created__at #{event.created_at.strftime('%Y/%m/%d')} <br> by #{link_to event.eventer.name, admin_eventer_path(event.eventer)}".html_safe
+
+        .page-header
+          .page-title ng一覧
+        .card-container
+          - @events[:ng]&.each do |event|
+            .col-md-4
+              .card.card-collapsed
+                .card-status.bg-green
+                .card-header
+                  = image_tag(event.images.url , class: 'avatar')
+                  h3.card-title.avatar-side-content
+                    = link_to event.title, admin_event_path(event)
+                  .card-options
+                    = event.my_offer(@artist).aasm_state
+                    a.card-options-collapse data-toggle="card-collapse" href="#"
+                      i.fe.fe-chevron-up
+                .card-body
+                  = "場所: #{event.house.present? ? event.house : '未設定'} "
+                  br
+                  = "日程: #{event.date.present? ? event.date.strftime('%y/%m/%d') : '未設定'}"
+                  br
+                  = "op/st : #{event.open.present? ? event.open : "tba"}/#{event.start.present? ? event.start : "tba"}"
+                  br
+                  = "adv/door : #{event.adv.present? ? event.adv : "tba"}/#{event.door.present? ? event.door : "tba"}"
+                  br
+                  |[決定act]
+                  br
+                  - if event.ok_artists.present?
+                    - event.ok_artists&.each do |artist|
+                      = "- #{link_to artist.name, admin_artist_path(artist)}".html_safe
+                      br
+                  - else
+                    = "なし"
 
                 .card-footer
                   = "created__at #{event.created_at.strftime('%Y/%m/%d')} <br> by #{link_to event.eventer.name, admin_eventer_path(event.eventer)}".html_safe

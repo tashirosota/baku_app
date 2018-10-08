@@ -23,9 +23,13 @@
             .card-body
               = "直近のライブ: 直近のライブを持ってくる実装"
               br
-              = "オファー数: 計#{artist.offers.count || 0}回"
+              = "オファー総数: #{artist.offers&.count}"
               br
-              = "決定数: 計#{artist.ok_count.count || 0}回"
+              = "出演数: #{artist.ok_events&.count}"
+              br
+              = "検討中: #{artist.offering_events&.count}"
+              br
+              = "NG数: #{artist.ng_events&.count}"
               br
               |MVs:
               - if artist.mv_urls.present?
@@ -35,7 +39,7 @@
                 |  登録されてません。
               br
             .card-footer
-              = "by #{artist.eventer.name} at #{artist.created_at.strftime('%y/%m/%d')}"
+              = "by #{link_to artist.eventer.name, admin_eventer_path(artist.eventer)} at #{artist.created_at.strftime('%y/%m/%d')}".html_safe
     .col-sm-12
       = "合計#{@total_records}件 現在 #{@current_page}頁目で#{@current_start}件目~#{@current_end}件目まで表示中"
       .pagination-position

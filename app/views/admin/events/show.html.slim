@@ -23,7 +23,12 @@
               br
               |[決定act]
               br
-              = "　未実装"
+              - if @event.ok_artists.present?
+                - @event.ok_artists&.each do |artist|
+                  = "- #{link_to artist.name, admin_artist_path(artist)}".html_safe
+                  br
+              - else
+                = "なし"
           .card-footer
             = "created_at #{@event.created_at.strftime('%Y/%m/%d')} <br>主催: #{link_to @event.eventer.name, admin_eventer_path}".html_safe
 
@@ -37,25 +42,26 @@
               h3.card-title.avatar-side-content
                 = link_to eventer.name, admin_eventer_path(eventer)
               .card-options
-                - collabo = Collaborator.find_by(event: @event,eventer: eventer)
-                = collabo.role
+                = eventer.my_collaboration(@event).role
                 a.card-options-collapse data-toggle="card-collapse" href="#"
                   i.fe.fe-chevron-up
             .card-body
               = eventer.profile
+              .text-left
+              | [オファー一覧]
               br
-              |[オファー一覧]
-              br
-              | オファー一覧のバンドをeachで状態とともに表示する
+              - @event.my_offered_artists(eventer)&.each do |artist|
+                = "- #{artist.name}:　#{@event.my_offer(artist).aasm_state}"
+                br
 
             .card-footer
-              = "created_at: #{collabo.created_at.strftime('%Y/%m/%d')}"
+              = "created_at: #{eventer.my_collaboration(@event).created_at.strftime('%Y/%m/%d')}"
 
       .col-lg-9
         .page-header
-          .page-title オファ一覧
+          .page-title 決定
         .card-container
-          - @offer_artists&.each do |artist|
+          - @artists[:ok]&.each do |artist|
             .col-md-4
               .card.card-collapsed
                 .card-status.bg-blue
@@ -64,8 +70,7 @@
                   h3.card-title.avatar-side-content
                     = link_to artist.name, admin_artist_path
                   .card-options
-                    - my_offer = Offer.find_by(artist: artist, event: @event)
-                    = my_offer.aasm_state
+                    = artist.my_offer(@event).aasm_state
                     a.card-options-collapse data-toggle="card-collapse" href="#"
                       i.fe.fe-chevron-up
 
@@ -76,4 +81,78 @@
                   br
                   = "決定数: 計#{artist.ok_count.count || 0}回"
                 .card-footer
-                  = "created_at #{my_offer.created_at.strftime('%Y/%m/%d')}"
+                  = "created_at #{artist.my_offer(@event).created_at.strftime('%Y/%m/%d')}"
+
+        .page-header
+          .page-title オファー中
+        .card-container
+          - @artists[:offering]&.each do |artist|
+            .col-md-4
+              .card.card-collapsed
+                .card-status.bg-blue
+                .card-header
+                  = image_tag(artist.artist_image.url , class: 'avatar')
+                  h3.card-title.avatar-side-content
+                    = link_to artist.name, admin_artist_path
+                  .card-options
+                    = artist.my_offer(@event).aasm_state
+                    a.card-options-collapse data-toggle="card-collapse" href="#"
+                      i.fe.fe-chevron-up
+
+                .card-body
+                  = "直近のライブ: 直近のライブを持ってくる実装"
+                  br
+                  = "オファー数: 計#{artist.offers.count || 0}回"
+                  br
+                  = "決定数: 計#{artist.ok_count.count || 0}回"
+                .card-footer
+                  = "created_at #{artist.my_offer(@event).created_at.strftime('%Y/%m/%d')}"
+        .page-header
+          .page-title 候補
+        .card-container
+          - @artists[:condidate]&.each do |artist|
+            .col-md-4
+              .card.card-collapsed
+                .card-status.bg-blue
+                .card-header
+                  = image_tag(artist.artist_image.url , class: 'avatar')
+                  h3.card-title.avatar-side-content
+                    = link_to artist.name, admin_artist_path
+                  .card-options
+                    = artist.my_offer(@event).aasm_state
+                    a.card-options-collapse data-toggle="card-collapse" href="#"
+                      i.fe.fe-chevron-up
+
+                .card-body
+                  = "直近のライブ: 直近のライブを持ってくる実装"
+                  br
+                  = "オファー数: 計#{artist.offers.count || 0}回"
+                  br
+                  = "決定数: 計#{artist.ok_count.count || 0}回"
+                .card-footer
+                  = "created_at #{artist.my_offer(@event).created_at.strftime('%Y/%m/%d')}"
+
+        .page-header
+          .page-title NG
+        .card-container
+          - @artists[:ng]&.each do |artist|
+            .col-md-4
+              .card.card-collapsed
+                .card-status.bg-blue
+                .card-header
+                  = image_tag(artist.artist_image.url , class: 'avatar')
+                  h3.card-title.avatar-side-content
+                    = link_to artist.name, admin_artist_path
+                  .card-options
+                    = artist.my_offer(@event).aasm_state
+                    a.card-options-collapse data-toggle="card-collapse" href="#"
+                      i.fe.fe-chevron-up
+
+                .card-body
+                  = "直近のライブ: 直近のライブを持ってくる実装"
+                  br
+                  = "オファー数: 計#{artist.offers.count || 0}回"
+                  br
+                  = "決定数: 計#{artist.ok_count.count || 0}回"
+                .card-footer
+                  = "created_at #{artist.my_offer(@event).created_at.strftime('%Y/%m/%d')}"

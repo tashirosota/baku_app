@@ -18,10 +18,13 @@
               = link_to "アーティスト一覧: ", admin_artists_path
               = "合計数 #{@eventer.artists.count}"
               br
-              = link_to "イベント一覧: ", admin_events_path
-              = "合計数#{@eventer.events.count + @eventer.collaborators.count} 全体(fix済み)未実装"
+              = link_to "主催イベント一覧: ", admin_events_path
+              = "合計数 #{@eventer.events.count}(#{@eventer.fixed_events_count + @eventer.finished_events_count})"
               br
-              = "オファー待ち数: 未実装"
+              = link_to "共催イベント一覧: ", admin_events_path
+              = "合計数 #{@eventer.collaborative_events.count}(#{@eventer.fixed_collaborative_events_count + @eventer.finished_collaborative_events_count})"
+              br
+              = "オファー待ち数: #{@eventer.events.map{|e| e.offering_artists}.count + @eventer.collaborative_events.map{|e| e.offering_artists}.count}"
 
           .card-footer
             = "created_at: #{@eventer.created_at.strftime('%Y/%m/%d')} <br> updated_at#{@eventer.updated_at.strftime('%Y/%m/%d')}".html_safe

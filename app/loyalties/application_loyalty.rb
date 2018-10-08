@@ -1,4 +1,4 @@
-class  ApplicationLoyalty
+class ApplicationLoyalty
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -35,6 +35,7 @@ class  ApplicationLoyalty
   end
 
   private
+
   def over_admin_level?
     Administrator::LEVEL[@user.role] > 1
   end

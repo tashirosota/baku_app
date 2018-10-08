@@ -1,15 +1,14 @@
 class ApplicationUploader < CarrierWave::Uploader::Base
-
   version :thumb do
-    process :resize_to_fit => [240, 240]
+    process resize_to_fit: [240, 240]
   end
 
-  def default_url(*args)
+  def default_url(*_args)
     ActionController::Base.helpers.asset_path '/dummy_avatar.png', type: :image
   end
 
   def extension_white_list
-    %W[jpg jpeg gif png]
+    %w(jpg jpeg gif png)
   end
 
   def filename

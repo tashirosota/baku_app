@@ -37,14 +37,14 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'aasm'
+gem 'banken'
 gem 'carrierwave'
 gem 'enumerize'
 gem 'faker'
 gem 'foreman'
-gem 'ransack'
 gem 'kaminari'
+gem 'ransack'
 gem 'slim-rails'
-gem 'banken'
 gem 'webpacker', github: 'rails/webpacker'
 # herokuでのログ出力
 gem 'rails_12factor', group: :production

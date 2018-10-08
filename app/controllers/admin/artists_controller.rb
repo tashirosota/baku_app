@@ -7,6 +7,9 @@ class Admin::ArtistsController < Admin::ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
-    @events = @artist.events
+    @events = {}
+    @events[:ok] = @artist.ok_events
+    @events[:offering] = @artist.offering_events
+    @events[:ng] = @artist.ng_events
   end
 end

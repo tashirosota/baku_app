@@ -17,5 +17,4 @@ class Collaborator < ApplicationRecord
   belongs_to :eventer
 
   enumerize :role, in: %w(editor viewer), scope: true, default: 'viewer', predicates: true
-
 end

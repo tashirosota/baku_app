@@ -33,8 +33,16 @@
               - event.concept.present?
                 = "[コンセプト]<br>#{event.concept}"
                 br
+              br
+                |[決定act]
+              - if event.ok_artists.present?
+                - event.ok_artists&.each do |artist|
+                  = "- #{link_to artist.name, admin_artist_path(artist)}".html_safe
+                  br
+              - else
+                = "なし"
             .card-footer
-              = "created_at #{event.created_at.strftime('%Y/%m/%d')} <br>by #{event.eventer.name}".html_safe
+              = "created_at #{event.created_at.strftime('%Y/%m/%d')} <br>by #{link_to event.eventer.name,admin_event_path(event.eventer) }".html_safe
     .col-sm-12
       = "合計#{@total_records}件 現在 #{@current_page}頁目で#{@current_start}件目~#{@current_end}件目まで表示中"
       .pagination-position

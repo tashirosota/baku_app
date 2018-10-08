@@ -24,11 +24,11 @@ class Artist < ApplicationRecord
   validates :web_url, format: { with: /\A#{URI.regexp(%w(http https))}\z/ }, allow_blank: true
   validates :genre, presence: true
 
-  #Artist.events 誘われているライブ
+  # Artist.events 誘われているライブ
   has_many :offers
   has_many :events, through: :offers
 
-  #Artist.eventer このアーティストを登録したイベンター
+  # Artist.eventer このアーティストを登録したイベンター
   belongs_to :eventer
 
   def valid_mv_urls
@@ -45,8 +45,8 @@ class Artist < ApplicationRecord
 
   # aasm_state_artists でofferの状態がaasm_stateのartists一覧を取得できる Event.ok_artists
   Offer.aasm.states.map(&:name).each do |state|
-    define_method ("#{state.to_s}_events".to_sym) do
-      offers.where(aasm_state: state).map{|offer| offer.event}
+    define_method("#{state}_events".to_sym) do
+      offers.where(aasm_state: state).map(&:event)
     end
   end
 end
