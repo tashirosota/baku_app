@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2018_09_24_061855) do
     t.string "role", comment: "権限"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_collaborators_on_event_id"
+    t.index ["eventer_id"], name: "index_collaborators_on_eventer_id"
   end
 
   create_table "eventers", force: :cascade do |t|
@@ -74,6 +76,8 @@ ActiveRecord::Schema.define(version: 2018_09_24_061855) do
     t.integer "artist_id", comment: "アーティストid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_offers_on_artist_id"
+    t.index ["event_id"], name: "index_offers_on_event_id"
   end
 
   create_table "state_histories", force: :cascade do |t|
