@@ -16,7 +16,7 @@ Administrator.create(name: '運営アカウント', role: 'operator', password: 
   eventer = Eventer.create!(name: "テストユーザ-#{i}", profile: 'テストアカウントです')
   20.times {eventer.artists.create!(name: Faker::Artist.name, genre: Faker::Music.genre)}
   20.times do |i|
-    e = eventer.events.create!(title: Faker::Artist.name, house: Faker::Pokemon.location)
+    e = eventer.events.create!(title: Faker::Artist.name, house: Faker::Pokemon.location, date: Faker::Date.forward(300))
 
     e.aasm.fire!(:list) if i%2 == 0
     e.aasm.fire!(:offer) if i%4 == 0
