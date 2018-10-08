@@ -18,12 +18,17 @@ class Artist < ApplicationRecord
   # youtubeでバリデーション
   before_validation :valid_mv_urls
 
-  mount_uploader :artist_image, ArtistUploader #carrierwave設定の時にまとめてやる
+  mount_uploader :artist_image, ArtistUploader
+
   validates :name, presence: true
   validates :web_url, format: { with: /\A#{URI.regexp(%w(http https))}\z/ }, allow_blank: true
   validates :genre, presence: true
 
+  #Artist.events 誘われているライブ
   has_many :offers
+  has_many :events, through: :offers
+
+  #Artist.eventer このアーティストを登録したイベンター
   belongs_to :eventer
 
   def valid_mv_urls

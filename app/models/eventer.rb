@@ -17,13 +17,13 @@ class Eventer < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :profile, presence: true, length: { maximum: 240 }
 
+  #Eventer.eventsで主催イベント一覧
   has_many :events
+  #Eventer.eventsで登録バンド一覧
   has_many :artists
+  #Eventer.collaborative_eventsで共同制作者としてのイベント一覧
   has_many :collaborators
-  has_many :follows_from, class_name: 'Friend', foreign_key: :from_user_id
-  has_many :follows_to,   class_name: 'Friend', foreign_key: :to_user_id
-  has_many :following, through: :follows_from, source: :to_user
-  has_many :followed,  through: :follows_to,   source: :from_user
+  has_many :collaborative_events, through: :collaborators ,source: :event
 
   def valid_twitter_url
     return true unless twitter_url

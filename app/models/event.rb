@@ -25,8 +25,16 @@ class Event < ApplicationRecord
   validates :title, presence: true
   validates :concept, length: { maximum: 240 }
 
+  #Event.artists オファーしたバンド一覧, Event.artists.where(aasm_state: :ok) 決定バンド一覧
   has_many :offers
+  has_many :artists, through: :offers
+
+  #Event.eventer 主催者
   belongs_to :eventer
+
+  #Event.collaborative_eventers 共同制作者一覧
   has_many :collaborators
+  has_many :collaborative_eventers, through: :collaborators, source: :event
+  #別名つけたい
 
 end
