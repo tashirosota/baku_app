@@ -35,6 +35,15 @@ class Event < ApplicationRecord
   #Event.collaborative_eventers 共同制作者一覧
   has_many :collaborators
   has_many :collaborative_eventers, through: :collaborators, source: :event
-  #別名つけたい
 
+  def my_offer(artist)
+    offers.find_by(artist: artist)
+  end
+
+  # aasm_state_artists でofferの状態がaasm_stateのartists一覧を取得できる Event.ok_artists
+  Offer.aasm.states.map(&:name).each do |state|
+    define_method ("#{state.to_s}_artists".to_sym) do
+      self.offers.where(aasm_state: state).map{|offer| offer.artist}
+    end
+  end
 end

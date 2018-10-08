@@ -25,11 +25,11 @@
               br
               = "　未実装"
           .card-footer
-            = "created_at #{@event.created_at.strftime('%Y/%m/%d')} <br>by #{link_to @event.eventer.name, admin_eventer_path}".html_safe
+            = "created_at #{@event.created_at.strftime('%Y/%m/%d')} <br>主催: #{link_to @event.eventer.name, admin_eventer_path}".html_safe
 
         - @collaborators&.each do |eventer|
           .page-header
-            .page-title コラボレータ一覧
+            .page-title 共催者一覧
           .card.card-collapsed
             .card-status.bg-red
             .card-header

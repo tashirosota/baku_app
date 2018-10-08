@@ -38,4 +38,15 @@ class Artist < ApplicationRecord
   def ok_count
     offers.where(aasm_state: :ok)
   end
+
+  def my_offer(event)
+    offers.find_by(event: event)
+  end
+
+  # aasm_state_artists でofferの状態がaasm_stateのartists一覧を取得できる Event.ok_artists
+  Offer.aasm.states.map(&:name).each do |state|
+    define_method ("#{state.to_s}_events".to_sym) do
+      offers.where(aasm_state: state).map{|offer| offer.event}
+    end
+  end
 end

@@ -3,43 +3,43 @@
     .row
       .col-lg-3
         .card.card-profile
-          .card-header style='background-color: #dc3545'
+          .card-header.bg-blue
           .card-body.text-center
-            = image_tag @eventer.avatar.url, class: 'card-profile-img'
+            = image_tag @artist.artist_image.url, class: 'card-profile-img'
             h3.mb-3
-              = @eventer.name
+              = @artist.name
             p.mb-4
-              = @eventer.profile
-            - if @eventer.twitter_url
-              a.btn.btn-outline-primary.btn-sm href="#{@eventer.twitter_url}"
-                span.fa.fa-twitter Follow
+              = @artist.genre
+            - if @artist.web_url
+              a.btn.btn-outline-primary.btn-sm href="#{@artist.web_url}"
+                span.fa.fa-vcard-o
             .text-left
               br
-              = link_to "アーティスト一覧: ", admin_artists_path
-              = "合計数 #{@eventer.artists.count}"
+              = "オファー総数: #{@artist.offers.count}"
               br
-              = link_to "イベント一覧: ", admin_events_path
-              = "合計数#{@eventer.events.count + @eventer.collaborators.count} 全体(fix済み)未実装"
+              = "出演数: #{@artist.offers.where(aasm_state: :ok).count}"
               br
-              = "オファー待ち数: 未実装"
+              = "NG数: #{@artist.offers.where(aasm_state: :ng).count}"
+              br
+
 
           .card-footer
-            = "created_at: #{@eventer.created_at.strftime('%Y/%m/%d')} <br> updated_at#{@eventer.updated_at.strftime('%Y/%m/%d')}".html_safe
+            = "created_at: #{@artist.created_at.strftime('%Y/%m/%d')} <br>by #{link_to @artist.eventer.name, admin_eventer_path(@artist.eventer)}".html_safe
 
       .col-lg-9
         .page-header
-          .page-title 共催イベント一覧
+          .page-title オファーイベント一覧
         .card-container
-          - @collabo_events&.each do |event|
+          - @events&.each do |event|
             .col-md-4
               .card.card-collapsed
                 .card-status.bg-green
                 .card-header
                   = image_tag(event.images.url , class: 'avatar')
                   h3.card-title.avatar-side-content
-                    = event.title
+                    = link_to event.title, admin_event_path(event)
                   .card-options
-                    = event.aasm_state
+                    = event.my_offer(@artist).aasm_state
                     a.card-options-collapse data-toggle="card-collapse" href="#"
                       i.fe.fe-chevron-up
                 .card-body
@@ -51,7 +51,6 @@
                   br
                   = "adv/door : #{event.adv.present? ? event.adv : "tba"}/#{event.door.present? ? event.door : "tba"}"
                   br
-                  br
-                  = "自分のオファーバンド一覧と状態が確認できるようにする"
+
                 .card-footer
-                  = "created_at #{event.created_at.strftime('%Y/%m/%d')} <br>by #{event.eventer.name}".html_safe
+                  = "created__at #{event.created_at.strftime('%Y/%m/%d')} <br> by #{link_to event.eventer.name, admin_eventer_path(event.eventer)}".html_safe
