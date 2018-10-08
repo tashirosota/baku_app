@@ -21,7 +21,9 @@
                 a.card-options-collapse data-toggle="card-collapse" href="#"
                   i.fe.fe-chevron-up
             .card-body
-              = "直近のライブ: 直近のライブを持ってくる実装"
+              = "直近のライブ: "
+              = link_to "#{artist.events.minimum("date").strftime("%m/%d")}",
+                admin_event_path(artist.events.order("date asc").select("id").first)
               br
               = "オファー総数: #{artist.offers&.count}"
               br
