@@ -22,8 +22,8 @@
                   i.fe.fe-chevron-up
             .card-body
               = "直近のライブ: "
-              = link_to "#{artist.events.minimum("date").strftime("%m/%d")}",
-                admin_event_path(artist.events.order("date asc").select("id").first)
+              = link_to "#{artist.nearest_ok_event}",
+                admin_event_path(artist.nearest_event_id)
               br
               = "オファー総数: #{artist.offers&.count}"
               br
