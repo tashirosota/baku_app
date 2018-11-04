@@ -2,19 +2,23 @@
 #
 # Table name: eventers
 #
-#  id          :bigint(8)        not null, primary key
-#  name        :string
-#  avatar      :string
-#  twitter_url :string
-#  profile     :text
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id              :bigint(8)        not null, primary key
+#  name            :string
+#  avatar          :string
+#  twitter_url     :string
+#  profile         :text
+#  password_digest :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
+
 class Eventer < ApplicationRecord
   # snsのカラムをvalidationしようと思ってるけど、そもそも更新を紐づけたときだけにしたら必要ないお
   before_validation :valid_twitter_url
   mount_uploader :avatar, EventerUploader # carrierwave設定の時にまとめてやる
+  has_secure_password
   validates :name, presence: true, uniqueness: true
+  validates :password, presence: true, length: { minimum: 8 }
   validates :profile, presence: true, length: { maximum: 240 }
 
   # Eventer.eventsで主催イベント一覧

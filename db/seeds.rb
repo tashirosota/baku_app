@@ -13,7 +13,7 @@ Administrator.create(name: '運営アカウント', role: 'operator', password: 
 
 
 30.times do |i|
-  eventer = Eventer.create!(name: "テストユーザ-#{i}", profile: 'テストアカウントです')
+  eventer = Eventer.create!(name: "テストユーザ-#{i}", profile: 'テストアカウントです', password: 'password', password_confirmation: 'password')
   20.times {eventer.artists.create!(name: Faker::Artist.name, genre: Faker::Music.genre)}
   20.times do |i|
     e = eventer.events.create!(title: Faker::Artist.name, house: Faker::Pokemon.location, date: Faker::Date.forward(300))

@@ -45,10 +45,11 @@ ActiveRecord::Schema.define(version: 2018_09_24_061855) do
   end
 
   create_table "eventers", force: :cascade do |t|
-    t.string "name", comment: "ユーザ名"
+    t.string "name", comment: "管理者名"
     t.string "avatar", comment: "プロフィール写真"
     t.string "twitter_url", comment: "twitter_url"
     t.text "profile", comment: "紹介文"
+    t.string "password_digest", null: false, comment: "暗号化パスワード"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -46,7 +46,15 @@ class Artist < ApplicationRecord
   # aasm_state_artists でofferの状態がaasm_stateのartists一覧を取得できる Event.ok_artists
   Offer.aasm.states.map(&:name).each do |state|
     define_method("#{state}_events".to_sym) do
-      offers.where(aasm_state: state).map(&:event)
+      offers.where(aasm_state: state).map{|o| o.event}
     end
+  end
+
+  def nearest_event
+    ok_events&.select{|e| e.date >= Date.today}.sort_by{|e| e.date}.first
+    # ok_events => 決定してあるイベント一覧を配列で取得
+    # selectでその中の今日以降のものに絞る
+    # sort_byでその中を開催日順にsort
+    # 一番近い日程をfirstで返す
   end
 end

@@ -1,17 +1,17 @@
 # rubocop:disable all
 Rails.application.routes.draw do
-  root 'client/dashboard#index'
   get 'login', to: 'client/sessions#new'
   post 'login', to: 'client/sessions#create'
   get 'logout', to: 'client/sessions#destroy'
+  root 'client/home#index'
 
   # client側route(pathにclientは含めないこと)
+  get 'calender', to: 'client/calenders#index'
   resources :events, controller: 'client/events'
   resources :artists, controller: 'client/artists'
-  resources :friends, controller: 'client/friends'
   resources :collaborators, controller: 'client/collaborators'
-  resources :offers, controller: 'client/offers'
   resource :eventer, controller: 'client/eventer'
+  resources :offers, controller: 'client/offer'
 
   # admin側route
   namespace :admin do
