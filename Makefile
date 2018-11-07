@@ -17,6 +17,9 @@ bundle-install:
 	docker-compose run --rm web bundle install
 	docker-compose run --rm web yarn install
 
+front-install:
+	docker-compose run --rm client yarn install
+
 setup:
 	docker-compose run --rm web bundle exec rake db:create db:migrate db:seed
 
@@ -41,6 +44,9 @@ console:
 
 bash:
 	docker-compose exec web /bin/bash
+
+front-bash:
+	docker-compose exec client /bin/sh
 
 usage:
 	@echo usage: [build, up, down, test, autotest, cops, console, clean, init-local, ecr, upload {BRANCH=[branch]}, deploy {ENV=[env]}]

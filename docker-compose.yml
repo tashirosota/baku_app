@@ -1,16 +1,14 @@
 version: '3'
 services:
-  # client:
-  #   build:
-  #     context: ./client
-  #     dockerfile: Dockerfile
-  #   command: npm run dev
-  #   ports:
-  #     - "8080:8080"
-  #   volumes:
-  #     - .:/client
-  #   depends_on:
-  #     - web
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    command: yarn dev
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./client:/client
 
   web:
     build:
