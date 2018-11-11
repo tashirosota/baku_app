@@ -4,12 +4,8 @@
     h2
     |Essential Links
     ul
-      li
-        a(href="https://vuejs.org" target="_blank")
-        | Core Docs
-      li
-        a(href="https://forum.vuejs.org" target="_blank")
-        | Forum
+      md-button.md-raised hello!
+      md-button.md-raised.md-primary Baku
 </template>
 
 <script>
